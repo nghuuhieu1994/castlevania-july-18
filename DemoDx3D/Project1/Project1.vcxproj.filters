@@ -27,6 +27,12 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{4b84bb9f-0f8e-4a6d-bec6-ae50d23c86b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameLog">
+      <UniqueIdentifier>{86b8b8ff-2a5f-44ed-903e-3fefbdec0161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameLog">
+      <UniqueIdentifier>{de97d7f5-e32d-48b3-a18c-45bf0a4fd50a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntryPoint.cpp">
@@ -44,6 +50,9 @@
     <ClCompile Include="CTextureDx9.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="GameLog.cpp">
+      <Filter>Source Files\GameLog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGame.h">
@@ -57,6 +66,9 @@
     </ClInclude>
     <ClInclude Include="CTextureDx9.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLog.h">
+      <Filter>Header Files\GameLog</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

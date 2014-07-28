@@ -1,5 +1,6 @@
 #include "CGame.h"
 #include <d3d9.h>
+#include "GameLog.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpStrCmdLine, int nShowCmd)
 {
@@ -7,5 +8,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpStrCmdL
 	Run->Init();
 	Run->Run();
 	Run->Exit();
+	
 	return 0;
 }
