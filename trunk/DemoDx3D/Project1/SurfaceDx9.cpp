@@ -1,4 +1,5 @@
 #include "CSurfaceDx9.h"
+#include "GameLog.h"
 
 CSurfaceDx9::CSurfaceDx9()
 {
@@ -35,7 +36,8 @@ bool CSurfaceDx9::CreateOffScreenSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice)
 
 	if(result != D3D_OK)
 	{
-		MessageBox(NULL,m_fileName,"Error!!! Can't Create Offscreen", MB_OK);
+		//MessageBox(NULL,m_fileName,"Error!!! Can't Create Offscreen", MB_OK);
+		CGameLog::GetInstance("SurfaceDx9")->SaveError("Can't Create Offscreen");
 		return false;
 	}
 	return true;
@@ -55,7 +57,8 @@ bool CSurfaceDx9::LoadSurfaceFromFile()
 
 	if(FAILED(result))
 	{
-		MessageBox(NULL, m_fileName,"Error!!! Can't Load Surface from File!!!", MB_OK);
+		//MessageBox(NULL, m_fileName,"Error!!! Can't Load Surface from File!!!", MB_OK);
+		CGameLog::GetInstance("CGame")->SaveError("Can't Load Surface from file");
 		return false;
 	}
 	return true;
@@ -68,7 +71,8 @@ LPDIRECT3DSURFACE9 CSurfaceDx9::LoadSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice)
 
 	if(FAILED(result))
 	{
-		MessageBox(NULL, m_fileName, "Can't get Image from file", MB_OK);
+		//MessageBox(NULL, m_fileName, "Can't get Image from file", MB_OK);
+		CGameLog::GetInstance("CGame")->SaveError("Can't get Image from file");
 		return NULL;
 	}
 
@@ -79,7 +83,8 @@ LPDIRECT3DSURFACE9 CSurfaceDx9::LoadSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice)
 	result = m_lpDirectDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &m_lpDBackBuffer);
 	if(FAILED(result))
 	{
-		MessageBox(NULL, m_fileName, "Error!!! Can't get Surface to backBuffer", MB_OK);
+		//MessageBox(NULL, m_fileName, "Error!!! Can't get Surface to backBuffer", MB_OK);
+		CGameLog::GetInstance("CGame")->SaveError("Can't get Surface to BackBuffer");
 		return NULL;
 	}
 	m_Rect.top = 100;
@@ -92,7 +97,8 @@ void CSurfaceDx9::RenderSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice)
 {
 	if(!m_lpDirectDevice)
 	{
-		MessageBox(NULL, "Can't find Direct Device", "ERROR", MB_OK);
+		//MessageBox(NULL, "Can't find Direct Device", "ERROR", MB_OK);
+		CGameLog::GetInstance("CGame")->SaveError("Can't find Direct Device");
 		return;
 	}
 	m_lpDirectDevice->StretchRect(

@@ -1,4 +1,5 @@
 #include "CGame.h"
+#include "GameLog.h"
 
 CGame::CGame()
 {
@@ -52,7 +53,8 @@ bool CGame::InitWindow()
 
 	if(!RegisterClassEx(&WndcEx))
 	{
-		MessageBox(0,"Can't Regis the WndcEx!!!", "Error", MB_OK);
+		//MessageBox(0,"Can't Regis the WndcEx!!!", "Error", MB_OK);
+		CGameLog::GetInstance("CGame")->SaveError("Can't Regis the WndcEx!!!");
 		return false;
 	}
 	m_hWnd = CreateWindow(
@@ -70,7 +72,8 @@ bool CGame::InitWindow()
 
 	if(!m_hWnd)
 	{
-		MessageBox(0,"Can't CraeteWindow!", "Error", MB_OK);
+		//MessageBox(0,"Can't CraeteWindow!", "Error", MB_OK);
+		CGameLog::GetInstance("CGame")->SaveError("Can't Create Window!");
 		return false;
 	}
 	ShowWindow(m_hWnd, SW_SHOW);
@@ -83,7 +86,8 @@ bool CGame::InitDirect3D()
 	this->m_d3d = Direct3DCreate9(D3D_SDK_VERSION);
 	if(!this->m_d3d)
 	{
-		MessageBox(0, "Can't Create Direct3D Object!", "Error", MB_OK);
+		//MessageBox(0, "Can't Create Direct3D Object!", "Error", MB_OK);
+		CGameLog::GetInstance("CGame")->SaveError("Can't Create Direct3D Object!");
 		return false;
 	}
 
@@ -109,7 +113,8 @@ bool CGame::InitDirect3D()
 		hr = m_d3d->CheckDeviceFormat(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, DisPlayMode.Format, D3DUSAGE_RENDERTARGET, D3DRTYPE_SURFACE, D3DFMT_A8R8G8B8);
 		if(FAILED(hr))
 		{
-			MessageBox(0, "Device format is unaccepatble for full screen mode", "Sorry", MB_OK);
+			//MessageBox(0, "Device format is unaccepatble for full screen mode", "Sorry", MB_OK);
+			CGameLog::GetInstance("CGame")->SaveError("Device format is unacceptable for full screen mode");
 			return false;
 		}
 
@@ -140,7 +145,8 @@ bool CGame::InitDirect3D()
 				&d3dpp,
 				&m_d3ddv)))
 				{
-					MessageBox(0,"Can't create Direct Divice!!!", "Error", MB_OK);
+					//MessageBox(0,"Can't create Direct Divice!!!", "Error", MB_OK);
+					CGameLog::GetInstance("CGame")->SaveError("Can't create Direct Device!!!");
 					return false;
 				}
 		}
