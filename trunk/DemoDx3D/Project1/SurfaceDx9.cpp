@@ -29,7 +29,7 @@ bool CSurfaceDx9::CreateOffScreenSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice)
 	result = m_lpDirectDevice->CreateOffscreenPlainSurface(
 		m_Info.Width,
 		m_Info.Height,
-		D3DFMT_X8B8G8R8,
+		D3DFMT_A8R8G8B8,
 		D3DPOOL_DEFAULT,
 		&this->m_lpDSurface,
 		NULL);
