@@ -160,7 +160,7 @@ void CGame::Init()
 	this->InitWindow();
 	this->InitDirect3D();
 
-	surFace = new CSurfaceDx9("Rectangle.png");
+	surFace = new CSurfaceDx9(new VectorDx9(100,200), "Rectangle.png");
 	surFace->LoadSurface(m_d3ddv);
 }
 
