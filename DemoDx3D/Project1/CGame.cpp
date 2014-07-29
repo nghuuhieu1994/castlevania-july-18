@@ -151,7 +151,9 @@ bool CGame::InitDirect3D()
 				}
 		}
 	}
-												
+	
+	D3DXCreateSprite(m_d3ddv, &m_SpriteHandler);
+
 	return true;
 }
 
@@ -164,6 +166,8 @@ void CGame::Init()
 	surFace->LoadSurface(m_d3ddv);
 	surFace2 = new CSurfaceDx9(new VectorDx9(400,400), "Rectangle.png");
 	surFace2->LoadSurface(m_d3ddv);
+	texture = new CTextureDx9(new D3DXVECTOR3(0,0,0), "Rectangle.png");
+	texture->LoadTextureFromeFile(m_d3ddv);
 }
 
 void CGame::Run()
@@ -187,6 +191,11 @@ void CGame::Run()
 			{
 				surFace->RenderSurface(m_d3ddv);
 				surFace2->RenderSurface(m_d3ddv);
+				m_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+				texture->RenderTexture(m_d3ddv,m_SpriteHandler);
+				m_SpriteHandler->End();
+
+
 				m_d3ddv->EndScene();
 			}
 			// All of Process
