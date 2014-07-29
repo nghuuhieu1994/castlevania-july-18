@@ -58,16 +58,16 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(13, 101);
+            this.panel1.Location = new System.Drawing.Point(13, 122);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(759, 415);
+            this.panel1.Size = new System.Drawing.Size(759, 427);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(15, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(717, 370);
+            this.pictureBox1.Size = new System.Drawing.Size(717, 385);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -77,7 +77,7 @@
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 30);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(759, 65);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(759, 86);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // MainForm
