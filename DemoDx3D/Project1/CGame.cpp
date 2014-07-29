@@ -162,6 +162,8 @@ void CGame::Init()
 
 	surFace = new CSurfaceDx9(new VectorDx9(100,200), "Rectangle.png");
 	surFace->LoadSurface(m_d3ddv);
+	surFace2 = new CSurfaceDx9(new VectorDx9(400,400), "Rectangle.png");
+	surFace2->LoadSurface(m_d3ddv);
 }
 
 void CGame::Run()
@@ -184,6 +186,7 @@ void CGame::Run()
 			if(m_d3ddv->BeginScene())
 			{
 				surFace->RenderSurface(m_d3ddv);
+				surFace2->RenderSurface(m_d3ddv);
 				m_d3ddv->EndScene();
 			}
 			// All of Process
