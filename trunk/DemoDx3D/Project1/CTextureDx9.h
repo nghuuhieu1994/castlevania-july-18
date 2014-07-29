@@ -3,6 +3,9 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "VectorDx9.h"
+#include "RectangleDx9.h"
+#include "VectorDx9.h"
+
 class CTextureDx9
 {
 private:	
@@ -13,15 +16,24 @@ private:
 	// include all info of the Image
 	D3DXIMAGE_INFO		m_Info;
 	// Position of this texture in game
-	VectorDx9			m_Position;
-	// Create texture from file
-	bool CreateTextureFromeFile(LPDIRECT3DDEVICE9	m_lpDirectDevice);
+	D3DXVECTOR3*			m_Position;
+	// Center of this TextureDx9
+	D3DXVECTOR3*			m_Center;
+	// sourceRectangle
+	RectangleDx9		m_SourceRect;
+	// COLOR
+	D3DCOLOR			m_Color;
 public:
 	// Cosntructor none parametor
-	CTextureDx9(LPDIRECT3DDEVICE9	m_lpDirectDevice);
+	CTextureDx9();
 	// Constructor 2 parametor position and fileName
-	CTextureDx9(VectorDx9* position, LPCSTR fileName);
+	CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName);
+	// constructor cpy
 	CTextureDx9(const CTextureDx9* textureDx9);
+	// Load texture from file
+	LPDIRECT3DTEXTURE9 LoadTextureFromeFile(LPDIRECT3DDEVICE9	_lpDirectDevice);
+	// Render this Texture
+	void RenderTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite);
 	~CTextureDx9();
 };
 

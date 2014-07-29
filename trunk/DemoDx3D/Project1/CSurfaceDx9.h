@@ -21,9 +21,9 @@ private:
 	// Position of the surface
 	VectorDx9				m_Position;
 	// SourceRect to render
-	RectangleDx9*			m_SourceRect;
+	RectangleDx9			m_SourceRect;
 	// DestREct to render
-	RectangleDx9*			m_DestRect;
+	RectangleDx9			m_DestRect;
 	// Create Offscreen Surface
 	bool	CreateOffScreenSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice);
 	// Load surface
@@ -36,13 +36,13 @@ public:
 	// constructor copi
 	CSurfaceDx9(const  CSurfaceDx9* surfaceDx9);
 	// get sourceRect
-	RectangleDx9* getSourceRect();
+	RectangleDx9 getSourceRect();
 	// get DestRect
-	RectangleDx9* getDestRect();
+	RectangleDx9 getDestRect();
 	// set SourceRect
-	void setSourceRect(RectangleDx9* sorceRect);
+	void setSourceRect(RectangleDx9 sorceRect);
 	// set DestRect
-	void setDestRect(RectangleDx9* destRect);
+	void setDestRect(RectangleDx9 destRect);
 	// Do all thing to Load surface
 	LPDIRECT3DSURFACE9 LoadSurface(LPDIRECT3DDEVICE9	m_lpDirectDevice);
 	// Render a surface to screen

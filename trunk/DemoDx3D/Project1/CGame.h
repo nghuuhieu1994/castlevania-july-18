@@ -5,6 +5,7 @@
 #include <iostream>
 #include "CGlobal.h"
 #include "CSurfaceDx9.h"
+#include "CTextureDx9.h"
 using namespace std;
 
 class CGame
@@ -17,6 +18,8 @@ protected:
 
 	LPDIRECT3D9			m_d3d;
 	LPDIRECT3DDEVICE9	m_d3ddv;
+	LPD3DXSPRITE		m_SpriteHandler;
+
 
 	int				m_scrWidth;
 	int				m_scrHeight;
@@ -28,6 +31,8 @@ protected:
 
 	CSurfaceDx9* surFace;
 	CSurfaceDx9* surFace2;
+
+	CTextureDx9* texture;
 
 public:
 	CGame();
