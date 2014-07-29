@@ -53,6 +53,12 @@
     <ClCompile Include="GameLog.cpp">
       <Filter>Source Files\GameLog</Filter>
     </ClCompile>
+    <ClCompile Include="RectangleDx9.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorDx9.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGame.h">
@@ -69,6 +75,12 @@
     </ClInclude>
     <ClInclude Include="GameLog.h">
       <Filter>Header Files\GameLog</Filter>
+    </ClInclude>
+    <ClInclude Include="RectangleDx9.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorDx9.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -72,7 +72,9 @@
     <ClCompile Include="CTextureDx9.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="GameLog.cpp" />
+    <ClCompile Include="RectangleDx9.cpp" />
     <ClCompile Include="SurfaceDx9.cpp" />
+    <ClCompile Include="VectorDx9.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGame.h" />
@@ -80,6 +82,8 @@
     <ClInclude Include="CSurfaceDx9.h" />
     <ClInclude Include="CTextureDx9.h" />
     <ClInclude Include="GameLog.h" />
+    <ClInclude Include="RectangleDx9.h" />
+    <ClInclude Include="VectorDx9.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
