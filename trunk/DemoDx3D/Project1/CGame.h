@@ -27,6 +27,7 @@ protected:
 	bool			InitDirect3D();
 
 	CSurfaceDx9* surFace;
+	CSurfaceDx9* surFace2;
 
 public:
 	CGame();
