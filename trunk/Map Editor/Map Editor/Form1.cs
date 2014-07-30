@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -14,33 +15,82 @@ namespace Map_Editor
 {
     public partial class MainForm : Form
     {
-        Image Main_Image;
+        Bitmap Main_Image;
         PictureBox z = new PictureBox();
         Cursor myCur;
+        Bitmap currentCursor;
         public MainForm()
         {
             InitializeComponent();
             Bitmap map = new Bitmap("background1.png");
+            GlobalFunction.ClearAlphaColor(map);
             Main_Image = new Bitmap("background1.png");
+            GlobalFunction.ClearAlphaColor(Main_Image);
             panel1.AutoScroll = true;
-            
+            panel1.HorizontalScroll.Enabled = false;
             this.pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.Image = map;
-            Button _newButton = new Button();
-
-            _newButton.BackgroundImage = new Bitmap("2.png");
-
-            _newButton.Size = new System.Drawing.Size(64, 64);
-            _newButton.BackgroundImageLayout = ImageLayout.Zoom;
-            _newButton.Name = "simon";
-            //_newButton.Click += new System.EventHandler(this.Button_Click);
-            flowLayoutPanel1.Controls.Add(_newButton);
+            
+            
+            //_newButton.BackgroundImage = new Bitmap("simon.png");
+            
+            
+            //flowLayoutPanel1.Controls.Add(_newButton);
             
             //pictureBox1.Controls.Add((Control)z);
             z.Image = Image.FromFile("2.png");
             z.Size = new Size(32, 32);
-            Bitmap cs = new Bitmap("2.png");
-            myCur = CursorTest.CreateCursor(cs, 0, 0);
+            Bitmap amc = new Bitmap("mousecursor.png");
+            GlobalFunction.ClearAlphaColor(amc);
+            //tabPage1.Controls.Add(_newButton);
+            //Bitmap cs = GlobalFunction.SetImageOpacity(amc, 0.7f);
+
+            myCur = GlobalFunction.CreateCursor(amc, 0, 0);
+            InitializeTabPage();
+        }
+
+        public void InitializeTabPage()
+        {
+            tabPage1.AutoScroll = true;
+            tabPage2.AutoScroll = true;
+            tabPage3.AutoScroll = true;
+            tabPage4.AutoScroll = true;
+
+            LoadTabPage(tabPage1, "simon");
+            LoadTabPage(tabPage2, "enemy");
+            LoadTabPage(tabPage3, "boss");
+            LoadTabPage(tabPage4, "ground");
+        }
+
+        public void LoadTabPage(TabPage _TabPage, string _type)
+        {
+            string[] filePathsPNG = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\image\\" + _type, "*.png", SearchOption.AllDirectories);
+
+            for (int i = 0; i < filePathsPNG.Length; i++)
+            {
+                Bitmap _newButtonIcon = new Bitmap(filePathsPNG[i]);
+                GlobalFunction.ClearAlphaColor(_newButtonIcon);
+
+                Button _newButton = new Button();
+                _newButton.Location = new Point(i * 50, 0);
+                _newButton.BackgroundImage = _newButtonIcon;
+                _newButton.Size = new System.Drawing.Size(50, 50);
+                _newButton.BackgroundImageLayout = ImageLayout.Zoom;
+                _newButton.Name = filePathsPNG[i];
+                _newButton.Click += new EventHandler(this.Button_Click);
+                _TabPage.Controls.Add(_newButton);
+            }
+        }
+
+        
+
+        public void Button_Click(object _obj, EventArgs e)
+        {
+            Button current = (Button)_obj;
+            Bitmap x = new Bitmap(current.BackgroundImage);
+            Bitmap cs = GlobalFunction.SetImageOpacity(x, 0.7f);
+            currentCursor = x;
+            myCur = GlobalFunction.CreateCursor(cs, 0, 0);
             
         }
 
@@ -48,90 +98,63 @@ namespace Map_Editor
         {
             Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
             string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
-            //Bitmap img = new Bitmap("background1.png");
             Graphics g = Graphics.FromImage(Main_Image);
-            g.DrawImage(Image.FromFile("2.png"), mouse_location);
+            g.DrawImage(currentCursor, mouse_location);
             pictureBox1.Image = Main_Image;
-            //img.Save("background1.png");
-            Console.WriteLine(_output);
         }
         
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            //Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
             Cursor.Current = myCur;
-            //z.Location = mouse_location;
-            //z.BringToFront();
-            //pictureBox1.Controls.Add(z);
-            
-            //pictureBox1.Controls.SetChildIndex(z, 1);
-            
-            //this.Controls.Add(z);
-            //Image temp = (Image)Main_Image.Clone();
-
-            //ColorMatrix matrix = new ColorMatrix(); 
-            //matrix.Matrix33 = 0.7f;
-
-            
-            //ImageAttributes attributes = new ImageAttributes();
-
-            
-            //attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);    
-
-            //Graphics g = Graphics.FromImage(temp);
-            //Image icon = Image.FromFile("2.png"); 
-            
-            ////g.DrawImage(icon, mouse_location,
-            //g.DrawImage(icon, new Rectangle(mouse_location, new Size(icon.Width, icon.Height)), 0, 0, icon.Width, icon.Height, GraphicsUnit.Pixel, attributes);
-
-            //pictureBox1.Image = temp;
-            //temp = null;
-            //Console.WriteLine(_output);
+            label1.Text = pictureBox1.PointToClient(Control.MousePosition).ToString();
         }
 
-       
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+               
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 'w')
+            {
+                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
+                //Control.MousePosition = new Point(Control.MousePosition.X, Control.MousePosition.Y - 1); 
+            }
+            if (e.KeyChar == 'a')
+            {
+                Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
+                //Control.MousePosition = new Point(Control.MousePosition.X, Control.MousePosition.Y - 1); 
+            }
+            if (e.KeyChar == 's')
+            {
+                Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 1);
+                //Control.MousePosition = new Point(Control.MousePosition.X, Control.MousePosition.Y - 1); 
+            }
+            if (e.KeyChar == 'd')
+            {
+                Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
+                //Control.MousePosition = new Point(Control.MousePosition.X, Control.MousePosition.Y - 1); 
+            }
+            if (e.KeyChar == 'c')
+            {
+                Cursor.Position = new Point(Cursor.Position.X + currentCursor.Width, Cursor.Position.Y);
+                //Control.MousePosition = new Point(Control.MousePosition.X, Control.MousePosition.Y - 1); 
+            }
+            if (e.KeyChar == 'x')
+            {
+                Cursor.Position = new Point(Cursor.Position.X - currentCursor.Width, Cursor.Position.Y);
+                //Control.MousePosition = new Point(Control.MousePosition.X, Control.MousePosition.Y - 1); 
+            }
+            if (e.KeyChar == 'z')
+            {
+                Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
+                string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
+                //Bitmap img = new Bitmap("background1.png");
+                Graphics g = Graphics.FromImage(Main_Image);
+                g.DrawImage(currentCursor, mouse_location);
+                pictureBox1.Image = Main_Image;
+            }
+        }
     }
-      public struct IconInfo
-  {
-    public bool fIcon;
-    public int xHotspot;
-    public int yHotspot;
-    public IntPtr hbmMask;
-    public IntPtr hbmColor;
-  }
-
-      public class CursorTest : Form
-      {
-          public CursorTest()
-          {
-              this.Text = "Cursor Test";
-
-              Bitmap bitmap = new Bitmap(140, 25);
-              Graphics g = Graphics.FromImage(bitmap);
-              using (Font f = new Font(FontFamily.GenericSansSerif, 10))
-                  g.DrawString("{ } Switch On The Code", f, Brushes.Green, 0, 0);
-
-              this.Cursor = CreateCursor(bitmap, 3, 3);
-
-              bitmap.Dispose();
-          }
-
-          [DllImport("user32.dll")]
-          public static extern IntPtr CreateIconIndirect(ref IconInfo icon);
-          [DllImport("user32.dll")]
-          [return: MarshalAs(UnmanagedType.Bool)]
-          public static extern bool GetIconInfo(IntPtr hIcon, ref IconInfo pIconInfo);
-
-          public static Cursor CreateCursor(Bitmap bmp, int xHotSpot, int yHotSpot)
-          {
-              IntPtr ptr = bmp.GetHicon();
-              IconInfo tmp = new IconInfo();
-              GetIconInfo(ptr, ref tmp);
-              tmp.xHotspot = xHotSpot;
-              tmp.yHotspot = yHotSpot;
-              tmp.fIcon = false;
-              ptr = CreateIconIndirect(ref tmp);
-              return new Cursor(ptr);
-          }
-      }
 }
