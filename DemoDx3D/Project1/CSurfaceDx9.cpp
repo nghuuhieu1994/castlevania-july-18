@@ -7,9 +7,9 @@ CSurfaceDx9::CSurfaceDx9()
 	this->m_lpDBackBuffer = NULL;
 	this->m_fileName = NULL;
 }
-CSurfaceDx9::CSurfaceDx9(VectorDx9* position, LPCSTR fileName)
+CSurfaceDx9::CSurfaceDx9(D3DXVECTOR3* position, LPCSTR fileName)
 {
-	this->m_Position = *position;
+	this->m_Position = new D3DXVECTOR3(*position);
 	this->m_fileName = fileName;
 	this->m_lpDSurface = NULL;
 	this->m_lpDBackBuffer = NULL;
@@ -90,12 +90,12 @@ LPDIRECT3DSURFACE9 CSurfaceDx9::LoadSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice)
 		return NULL;
 	}
 	
-	this->m_SourceRect = RectangleDx9(
-											m_Position.getY(), 
-											m_Position.getX(), 
-											m_Info.Height + m_Position.getY(),
-											m_Info.Width + m_Position.getX());
-	this->m_DestRect = RectangleDx9(0, 0, 200, 200);
+	this->m_SourceRect = new RectangleDx9(
+											m_Position->y , 
+											m_Position->x, 
+											m_Info.Height + m_Position->y,
+											m_Info.Width + m_Position->x);
+	this->m_DestRect = new RectangleDx9(0, 0, m_Info.Height, m_Info.Width);
 
 	return (this->m_lpDSurface);
 }
@@ -109,9 +109,9 @@ void CSurfaceDx9::RenderSurface(LPDIRECT3DDEVICE9	m_lpDirectDevice)
 	}
 	m_lpDirectDevice->StretchRect(
 		m_lpDSurface, 
-		&m_DestRect.getRECT(),
+		&m_DestRect->getRECT(),
 		m_lpDBackBuffer,
-		&m_SourceRect.getRECT(),
+		&m_SourceRect->getRECT(),
 		D3DTEXF_NONE);
 }
 
@@ -130,21 +130,23 @@ CSurfaceDx9::~CSurfaceDx9()
 	}
 }
 
-RectangleDx9 CSurfaceDx9::getSourceRect()
+RectangleDx9* CSurfaceDx9::getSourceRect()
 {
 	return this->m_SourceRect;
 }
-RectangleDx9 CSurfaceDx9::getDestRect()
+RectangleDx9* CSurfaceDx9::getDestRect()
 {
 	return this->m_DestRect;
 }
 void CSurfaceDx9::setSourceRect(RectangleDx9 sourceRect)
 {
-	//delete m_SourceRect;
-	m_SourceRect = RectangleDx9(sourceRect);
+	if(!m_SourceRect)
+		delete m_SourceRect;
+	m_SourceRect = new RectangleDx9(sourceRect);
 }
 void CSurfaceDx9::setDestRect(RectangleDx9 destRect)
 {
-	//delete m_DestRect;
-	m_DestRect = RectangleDx9(destRect);
+	if(!m_DestRect)
+		delete m_DestRect;
+	m_DestRect = new RectangleDx9(destRect);
 }
