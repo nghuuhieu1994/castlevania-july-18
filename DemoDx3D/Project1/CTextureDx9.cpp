@@ -31,11 +31,11 @@ LPDIRECT3DTEXTURE9 CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9		_lpDirec
 	}
 
 	this->m_SourceRect = 
-		RectangleDx9(
-		m_Position->y, 
-		m_Position->x, 
-		m_Info.Height + m_Position->y,
-		m_Info.Width + m_Position->x);
+		new RectangleDx9(
+						m_Position->y, 
+						m_Position->x, 
+						m_Info.Height + m_Position->y,
+						m_Info.Width + m_Position->x);
 
 	return this->m_lpDTexture;
 }
@@ -44,12 +44,13 @@ CTextureDx9::CTextureDx9()
 {
 	this->m_lpDTexture = NULL;
 }
-CTextureDx9::CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName)
+CTextureDx9::CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName, D3DCOLOR color)
 {
 	this->m_Position = new D3DXVECTOR3(*position);
 	this->m_fileName = fileName;
 	this->m_lpDTexture = NULL;
 	this->m_Center = NULL;
+	this->m_Color = color;
 }
 CTextureDx9::CTextureDx9(const CTextureDx9* textureDx9)
 {
@@ -71,7 +72,7 @@ void CTextureDx9::RenderTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE 
 	}
 
 	_lpDSprite->Draw(this->m_lpDTexture,
-		&this->m_SourceRect.getRECT(),
+		&this->m_SourceRect->getRECT(),
 		this->m_Center,
 		this->m_Position,
 		m_Color);

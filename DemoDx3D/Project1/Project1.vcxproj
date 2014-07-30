@@ -67,18 +67,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CAnimationDx9.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGlobal.cpp" />
+    <ClCompile Include="CSpriteDx9.cpp" />
     <ClCompile Include="CTextureDx9.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="GameLog.cpp" />
     <ClCompile Include="RectangleDx9.cpp" />
-    <ClCompile Include="SurfaceDx9.cpp" />
+    <ClCompile Include="CSurfaceDx9.cpp" />
     <ClCompile Include="VectorDx9.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CAnimationDx9.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGlobal.h" />
+    <ClInclude Include="CSpriteDx9.h" />
     <ClInclude Include="CSurfaceDx9.h" />
     <ClInclude Include="CTextureDx9.h" />
     <ClInclude Include="GameLog.h" />

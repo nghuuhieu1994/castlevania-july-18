@@ -1,5 +1,6 @@
 #include "CGame.h"
 #include "GameLog.h"
+#include <d3dtypes.h>
 
 CGame::CGame()
 {
@@ -162,11 +163,11 @@ void CGame::Init()
 	this->InitWindow();
 	this->InitDirect3D();
 
-	surFace = new CSurfaceDx9(new VectorDx9(100,200), "Rectangle.png");
+	surFace = new CSurfaceDx9(new D3DXVECTOR3(100, 200, 0), "Rectangle.png");
 	surFace->LoadSurface(m_d3ddv);
-	surFace2 = new CSurfaceDx9(new VectorDx9(400,400), "Rectangle.png");
+	surFace2 = new CSurfaceDx9(new D3DXVECTOR3(400, 400, 0), "Rectangle.png");
 	surFace2->LoadSurface(m_d3ddv);
-	texture = new CTextureDx9(new D3DXVECTOR3(0,0,0), "Rectangle.png");
+	texture = new CTextureDx9(new D3DXVECTOR3(0,0,0), "Rectangle.png", 0xFFFFFFFF);
 	texture->LoadTextureFromeFile(m_d3ddv);
 }
 
