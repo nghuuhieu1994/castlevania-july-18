@@ -19,11 +19,11 @@ private:
 	// include all infomation of the image
 	D3DXIMAGE_INFO			m_Info;
 	// Position of the surface
-	VectorDx9				m_Position;
+	D3DXVECTOR3*				m_Position;
 	// SourceRect to render
-	RectangleDx9			m_SourceRect;
+	RectangleDx9*			m_SourceRect;
 	// DestREct to render
-	RectangleDx9			m_DestRect;
+	RectangleDx9*			m_DestRect;
 	// Create Offscreen Surface
 	bool	CreateOffScreenSurface(LPDIRECT3DDEVICE9		m_lpDirectDevice);
 	// Load surface
@@ -32,13 +32,13 @@ public:
 	// constructor none parametor
 	CSurfaceDx9();
 	// constructor 2 parametor Position and fileName
-	CSurfaceDx9(VectorDx9* position, LPCSTR  fileName);
+	CSurfaceDx9(D3DXVECTOR3* position, LPCSTR  fileName);
 	// constructor copi
 	CSurfaceDx9(const  CSurfaceDx9* surfaceDx9);
 	// get sourceRect
-	RectangleDx9 getSourceRect();
+	RectangleDx9* getSourceRect();
 	// get DestRect
-	RectangleDx9 getDestRect();
+	RectangleDx9* getDestRect();
 	// set SourceRect
 	void setSourceRect(RectangleDx9 sorceRect);
 	// set DestRect

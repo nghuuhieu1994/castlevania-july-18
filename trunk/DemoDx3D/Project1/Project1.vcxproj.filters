@@ -33,6 +33,12 @@
     <Filter Include="Source Files\GameLog">
       <UniqueIdentifier>{de97d7f5-e32d-48b3-a18c-45bf0a4fd50a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\Sprite">
+      <UniqueIdentifier>{0dba8b7d-bb1b-4275-9247-4da9a6392721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Sprite">
+      <UniqueIdentifier>{0b870841-b1ba-4b46-88e8-a45e38d205ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntryPoint.cpp">
@@ -43,9 +49,6 @@
     </ClCompile>
     <ClCompile Include="CGlobal.cpp">
       <Filter>Source Files\Global</Filter>
-    </ClCompile>
-    <ClCompile Include="SurfaceDx9.cpp">
-      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="CTextureDx9.cpp">
       <Filter>Source Files\Graphics</Filter>
@@ -58,6 +61,15 @@
     </ClCompile>
     <ClCompile Include="VectorDx9.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="CSurfaceDx9.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpriteDx9.cpp">
+      <Filter>Source Files\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimationDx9.cpp">
+      <Filter>Source Files\Graphics\Sprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +93,12 @@
     </ClInclude>
     <ClInclude Include="VectorDx9.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpriteDx9.h">
+      <Filter>Header Files\Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimationDx9.h">
+      <Filter>Header Files\Graphics\Sprite</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

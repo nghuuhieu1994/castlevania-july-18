@@ -20,14 +20,14 @@ private:
 	// Center of this TextureDx9
 	D3DXVECTOR3*			m_Center;
 	// sourceRectangle
-	RectangleDx9		m_SourceRect;
+	RectangleDx9*		m_SourceRect;
 	// COLOR
 	D3DCOLOR			m_Color;
 public:
 	// Cosntructor none parametor
 	CTextureDx9();
 	// Constructor 2 parametor position and fileName
-	CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName);
+	CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName, D3DCOLOR color);
 	// constructor cpy
 	CTextureDx9(const CTextureDx9* textureDx9);
 	// Load texture from file

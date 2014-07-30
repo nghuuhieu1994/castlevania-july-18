@@ -9,13 +9,13 @@ private:
 	// this's RECT instance to do some fucking func
 	RECT	m_Rect;
 	// this's Top index use in this's RECT
-	int		m_Top;
-	// this's Left index use in this's RECT
-	int		m_Left;
-	// this's Bot index use in this's RECT
-	int		m_Bot;
-	// this's Right index use in this's RECT
-	int		m_Right;
+	//int		m_Top;
+	//// this's Left index use in this's RECT
+	//int		m_Left;
+	//// this's Bot index use in this's RECT
+	//int		m_Bot;
+	//// this's Right index use in this's RECT
+	//int		m_Right;
 public:
 	// Constructor none parameter
 	RectangleDx9();
