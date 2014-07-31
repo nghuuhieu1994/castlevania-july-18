@@ -69,6 +69,7 @@
   <ItemGroup>
     <ClCompile Include="CAnimationDx9.cpp" />
     <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CGameTimeDx9.cpp" />
     <ClCompile Include="CGlobal.cpp" />
     <ClCompile Include="CSpriteDx9.cpp" />
     <ClCompile Include="CTextureDx9.cpp" />
@@ -81,6 +82,7 @@
   <ItemGroup>
     <ClInclude Include="CAnimationDx9.h" />
     <ClInclude Include="CGame.h" />
+    <ClInclude Include="CGameTimeDx9.h" />
     <ClInclude Include="CGlobal.h" />
     <ClInclude Include="CSpriteDx9.h" />
     <ClInclude Include="CSurfaceDx9.h" />
