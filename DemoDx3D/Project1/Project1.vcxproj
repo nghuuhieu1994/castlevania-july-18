@@ -73,6 +73,7 @@
     <ClCompile Include="CGlobal.cpp" />
     <ClCompile Include="CSpriteDx9.cpp" />
     <ClCompile Include="CTextureDx9.cpp" />
+    <ClCompile Include="CTimeSpanDx9.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="GameLog.cpp" />
     <ClCompile Include="RectangleDx9.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="CSpriteDx9.h" />
     <ClInclude Include="CSurfaceDx9.h" />
     <ClInclude Include="CTextureDx9.h" />
+    <ClInclude Include="CTimeSpanDx9.h" />
     <ClInclude Include="GameLog.h" />
     <ClInclude Include="RectangleDx9.h" />
     <ClInclude Include="VectorDx9.h" />

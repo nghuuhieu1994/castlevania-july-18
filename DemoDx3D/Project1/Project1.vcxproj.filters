@@ -74,6 +74,9 @@
     <ClCompile Include="CGameTimeDx9.cpp">
       <Filter>Source Files\CGame</Filter>
     </ClCompile>
+    <ClCompile Include="CTimeSpanDx9.cpp">
+      <Filter>Source Files\CGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGame.h">
@@ -104,6 +107,9 @@
       <Filter>Header Files\Graphics\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="CGameTimeDx9.h">
+      <Filter>Header Files\CGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeSpanDx9.h">
       <Filter>Header Files\CGame</Filter>
     </ClInclude>
   </ItemGroup>
