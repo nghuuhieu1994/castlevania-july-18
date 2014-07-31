@@ -6,6 +6,8 @@
 #include "CGlobal.h"
 #include "CSurfaceDx9.h"
 #include "CTextureDx9.h"
+#include "CSpriteDx9.h"
+#include "CGameTimeDx9.h"
 using namespace std;
 
 class CGame
@@ -20,6 +22,7 @@ protected:
 	LPDIRECT3DDEVICE9	m_d3ddv;
 	LPD3DXSPRITE		m_SpriteHandler;
 
+	CGameTimeDx9*		m_GameTime;
 
 	int				m_scrWidth;
 	int				m_scrHeight;
@@ -29,10 +32,11 @@ protected:
 	bool			InitWindow();
 	bool			InitDirect3D();
 
-	CSurfaceDx9* surFace;
-	CSurfaceDx9* surFace2;
+	CSurfaceDx9*	surFace;
+	CSurfaceDx9*	surFace2;
+	CTextureDx9*	texture;
+	CSpriteDx9*		sprite;
 
-	CTextureDx9* texture;
 
 public:
 	CGame();

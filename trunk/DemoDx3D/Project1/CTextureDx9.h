@@ -32,6 +32,10 @@ public:
 	CTextureDx9(const CTextureDx9* textureDx9);
 	// Load texture from file
 	LPDIRECT3DTEXTURE9 LoadTextureFromeFile(LPDIRECT3DDEVICE9	_lpDirectDevice);
+	// Return the info of this image
+	D3DXIMAGE_INFO getINFO();
+	// set RECT
+	void setRECT(RECT* otherRECT);
 	// Render this Texture
 	void RenderTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite);
 	~CTextureDx9();
