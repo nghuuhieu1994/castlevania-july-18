@@ -9,6 +9,7 @@ LPDIRECT3DTEXTURE9 CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9		_lpDirec
 		CGameLog::GetInstance("CTextureDx9")->SaveError("Can't get Image info frome file");
 		return NULL;
 	}
+
 	hr = D3DXCreateTextureFromFileEx(
 		_lpDirectDevice,
 		m_fileName,
@@ -24,6 +25,7 @@ LPDIRECT3DTEXTURE9 CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9		_lpDirec
 		&m_Info,
 		NULL,
 		&this->m_lpDTexture);
+
 	if(FAILED(hr))
 	{
 		CGameLog::GetInstance("CTextureDx9")->SaveError("Can't Create Texture from file");
@@ -32,10 +34,10 @@ LPDIRECT3DTEXTURE9 CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9		_lpDirec
 
 	this->m_SourceRect = 
 		new RectangleDx9(
-						m_Position->y, 
-						m_Position->x, 
-						m_Info.Height + m_Position->y,
-						m_Info.Width + m_Position->x);
+						0, 
+						0, 
+						m_Info.Height,
+						m_Info.Width);
 
 	return this->m_lpDTexture;
 }
@@ -58,6 +60,16 @@ CTextureDx9::CTextureDx9(const CTextureDx9* textureDx9)
 	this->m_fileName = NULL;
 }
 
+D3DXIMAGE_INFO CTextureDx9::getINFO()
+{
+	return this->m_Info;
+}
+
+void CTextureDx9::setRECT(RECT* otherRECT)
+{
+	//this->m_SourceRect
+}
+
 void CTextureDx9::RenderTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite)
 {
 	if(_lpDirectDevice == NULL)
@@ -76,7 +88,4 @@ void CTextureDx9::RenderTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE 
 		this->m_Center,
 		this->m_Position,
 		m_Color);
-
-	//_lpDSprite->Draw(this->m_lpDTexture,
-
 }
