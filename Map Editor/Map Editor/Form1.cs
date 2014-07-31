@@ -95,11 +95,11 @@ namespace Map_Editor
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (myCur.Tag == null)
-            {
-                MessageBox.Show("Error!");
-                return;
-            }
+            // if (myCur.Tag == null)
+            // {
+                // MessageBox.Show("Error!");
+                // return;
+            // }
             Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
             string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
             
@@ -172,11 +172,11 @@ namespace Map_Editor
                 Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
                 string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
 
-                if (myCur.Tag == null)
-                {
-                    MessageBox.Show("Error!");
-                    return;
-                }
+                // if (myCur.Tag == null)
+                // {
+                    // MessageBox.Show("Error!");
+                    // return;
+                // }
 
                 PictureBox temp = new PictureBox();
                 temp.Location = mouse_location;
