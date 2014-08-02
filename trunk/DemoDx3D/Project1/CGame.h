@@ -32,9 +32,9 @@ protected:
 	bool			InitWindow();
 	bool			InitDirect3D();
 
-	CSurfaceDx9*	surFace;
+	/*CSurfaceDx9*	surFace;
 	CSurfaceDx9*	surFace2;
-	CTextureDx9*	texture;
+	CTextureDx9*	texture;*/
 	CSpriteDx9*		sprite;
 
 

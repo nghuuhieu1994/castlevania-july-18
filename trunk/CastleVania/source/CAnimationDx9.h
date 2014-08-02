@@ -9,10 +9,8 @@ private:
 	int			m_FrameWidth;
 	// Height of a Frame in sheer image
 	int		m_FrameHeight;
-
 	//Num Row frame in sheet image
 	int		m_Row;
-	
 	// Num Colum frame in sheet image
 	int		m_Col;
 	// Total frame in sheet
