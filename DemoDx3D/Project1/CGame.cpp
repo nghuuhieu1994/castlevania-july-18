@@ -163,14 +163,14 @@ void CGame::Init()
 	this->InitWindow();
 	this->InitDirect3D();
 	m_GameTime = new CGameTimeDx9();
-	surFace = new CSurfaceDx9(new D3DXVECTOR3(100, 200, 0), "Rectangle.png");
+	/*surFace = new CSurfaceDx9(new D3DXVECTOR3(100, 200, 0), "Rectangle.png");
 	surFace->LoadSurface(m_d3ddv);
 	surFace2 = new CSurfaceDx9(new D3DXVECTOR3(400, 400, 0), "Rectangle.png");
 	surFace2->LoadSurface(m_d3ddv);
-	texture = new CTextureDx9(new D3DXVECTOR3(0,0,0), "Rectangle.png", 0xFFFFFFFF);
-	texture->LoadTextureFromeFile(m_d3ddv);
+	texture = new CTextureDx9(new D3DXVECTOR3(0,0,0), "background1.png", 0xFFFFFFFF);
+	texture->LoadTextureFromeFile(m_d3ddv);*/
 
-	sprite = new CSpriteDx9(new D3DXVECTOR3(400, 0, 0),"Rectangle.png",0xFFFFFFFF, 1, 1, 1);
+	sprite = new CSpriteDx9(new D3DXVECTOR3(0, 0, 0),"background1.png",0xFFFFFFFF, 1, 1, 1);
 	sprite->LoadContent(m_d3ddv);
 }
 
@@ -178,7 +178,7 @@ void CGame::Run()
 {
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));
-
+	CGameLog::GetInstance("CGame")->SaveInfo("Testing Game");
 	while(1)
 	{
 		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -192,15 +192,16 @@ void CGame::Run()
 		{
 			m_GameTime->UpdateGameTime();
 
-			m_d3ddv->Clear(0,0,D3DCLEAR_TARGET,0x0af0f0c3, 1.0f, 0);
+			m_d3ddv->Clear(0,0,D3DCLEAR_TARGET,0x00000000, 1.0f, 0);
 			if(m_d3ddv->BeginScene())
 			{
-				surFace->RenderSurface(m_d3ddv);
-				surFace2->RenderSurface(m_d3ddv);
+				/*surFace->RenderSurface(m_d3ddv);
+				surFace2->RenderSurface(m_d3ddv);*/
 				m_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-				texture->RenderTexture(m_d3ddv,m_SpriteHandler);
+				/*texture->RenderTexture(m_d3ddv,m_SpriteHandler);*/
 
 				sprite->UpdateAnimation(m_GameTime, 100);
+				
 				sprite->Render(m_d3ddv, m_SpriteHandler);
 
 				m_SpriteHandler->End();

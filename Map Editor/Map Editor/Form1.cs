@@ -100,22 +100,30 @@ namespace Map_Editor
                 // MessageBox.Show("Error!");
                 // return;
             // }
-            Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
-            string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
-            
-            PictureBox temp = new PictureBox();
-            temp.Location = mouse_location;
-            temp.Image = currentCursor;
-            temp.Size = currentCursor.Size;
-            temp.MouseClick += temp_MouseClick;
-            temp.MouseMove +=temp_MouseMove;
-            temp.MouseHover += temp_MouseMove;
-            temp.MouseLeave += temp_MouseMove;
-            temp.MouseDown += temp_MouseMove;
-            temp.BackColor = Color.Transparent;
-            
-            pictureBox1.Controls.Add(temp);
-            Console.WriteLine(pictureBox1.Controls.Count.ToString());
+            try
+            {
+                Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
+                string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
+
+                PictureBox temp = new PictureBox();
+                temp.Location = mouse_location;
+                temp.Image = currentCursor;
+                temp.Size = currentCursor.Size;
+                temp.MouseClick += temp_MouseClick;
+                temp.MouseMove += temp_MouseMove;
+                temp.MouseHover += temp_MouseMove;
+                temp.MouseLeave += temp_MouseMove;
+                temp.MouseDown += temp_MouseMove;
+                temp.BackColor = Color.Transparent;
+
+                pictureBox1.Controls.Add(temp);
+                Console.WriteLine(pictureBox1.Controls.Count.ToString());
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No Object To Add!");
+            }
         }
         
         private void temp_MouseMove(object _obj, EventArgs e)
@@ -167,25 +175,32 @@ namespace Map_Editor
             {
                 Cursor.Position = new Point(Cursor.Position.X - currentCursor.Width, Cursor.Position.Y);
             }
-            if (e.KeyChar == 'z')
-            {
-                Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
-                string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
+            //if (e.KeyChar == 'z')
+            //{
+            //    try
+            //    {
+            //        Point mouse_location = pictureBox1.PointToClient(Control.MousePosition);
+            //        string _output = "X: " + mouse_location.X + " Y: " + mouse_location.Y;
 
-                // if (myCur.Tag == null)
-                // {
-                    // MessageBox.Show("Error!");
-                    // return;
-                // }
+            //        // if (myCur.Tag == null)
+            //        // {
+            //        // MessageBox.Show("Error!");
+            //        // return;
+            //        // }
 
-                PictureBox temp = new PictureBox();
-                temp.Location = mouse_location;
-                temp.Image = currentCursor;
-                temp.Size = currentCursor.Size;
-                temp.MouseClick += temp_MouseClick;
-                temp.BackColor = Color.Transparent;
-                pictureBox1.Controls.Add(temp);
-            }
+            //        PictureBox temp = new PictureBox();
+            //        temp.Location = mouse_location;
+            //        temp.Image = currentCursor;
+            //        temp.Size = currentCursor.Size;
+            //        temp.MouseClick += temp_MouseClick;
+            //        temp.BackColor = Color.Transparent;
+            //        pictureBox1.Controls.Add(temp);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("No Object To Add!");
+            //    }
+            //}
         }
     }
 }
