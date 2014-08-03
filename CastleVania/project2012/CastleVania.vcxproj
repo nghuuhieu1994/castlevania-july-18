@@ -95,6 +95,7 @@
     <ClInclude Include="..\source\GameLog.h" />
     <ClInclude Include="..\source\RectangleDx9.h" />
     <ClInclude Include="..\source\VectorDx9.h" />
+    <ClInclude Include="CSoundsManagerDx9.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\source\gamelog.log" />

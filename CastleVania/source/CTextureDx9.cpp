@@ -54,7 +54,7 @@ CTextureDx9::CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName, D3DCOLOR color)
 	this->m_lpDTexture = NULL;
 	this->m_Center = NULL;
 	this->m_Color = color;
-	//m_Center = new D3DXVECTOR3(0, 0, 0);
+	m_Center = new D3DXVECTOR3(0, 0, 0);
 }
 CTextureDx9::CTextureDx9(const CTextureDx9* textureDx9)
 {
@@ -69,8 +69,6 @@ D3DXIMAGE_INFO CTextureDx9::getINFO()
 
 void CTextureDx9::setRECT(RECT* otherRECT)
 {
-	
-	
 }
 
 //void CTextureDx9::RenderTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite)
@@ -100,7 +98,11 @@ void CTextureDx9::RenderTexture(LPD3DXSPRITE SpriteBatch, RECT* SourceRectangle,
 		CGameLog::GetInstance("CTextureDx9Render")->SaveError("Can't find lpDSprire to render");
 		return;
 	}
-	m_Center = new D3DXVECTOR3(0, 0, 0);
+
+	m_Center->x			= 0;
+	m_Center->y			= 0;
+	m_Center->z			= 0;
+	
 	SpriteBatch->Draw(
 		this->m_lpDTexture, 
 		SourceRectangle,
