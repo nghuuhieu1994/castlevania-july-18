@@ -109,5 +109,5 @@ void CTextureDx9::RenderTexture(LPD3DXSPRITE SpriteBatch, RECT* SourceRectangle,
 		m_Center,
 		Location,
 		0xFFFFFFFF);
-	delete m_Center;
+	//delete m_Center;
 }
