@@ -10,5 +10,6 @@ class CGlobal
 {
 public:
 	static bool IsWindowMode;
+	static bool IsExit;
 };
 #endif

@@ -167,10 +167,13 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	this->InitializeDirect3DEnvironment();
 	this->InitializeDirect3DDevice(isWindowed);
 	this->InitializDirect3DSpriteHandle();
-	//m_GameTime = new CGameTimeDx9();
+	
+	this->m_GameTime = new CGameTimeDx9();
+	this->m_GameTime->InitGameTime();
+	this->m_fps = 0;
 
-	sprite = new CSpriteDx9(new D3DXVECTOR3(200, 200, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);
-	sprite->LoadContent(m_lpDirect3DDevice);
+	this->sprite = new CSpriteDx9(new D3DXVECTOR3(200, 200, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);
+	this->sprite->LoadContent(m_lpDirect3DDevice);
 	return true;
 }
 
@@ -178,8 +181,10 @@ void CGame::Run()
 {
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));
-	
-	while(1)
+
+	//	int _fps = 0;
+
+	while(!CGlobal::IsExit)
 	{
 		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
@@ -190,26 +195,28 @@ void CGame::Run()
 		}
 		else
 		{
-			//m_GameTime->UpdateGameTime();
-
-			m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0);
-			if(m_lpDirect3DDevice->BeginScene())
+			m_GameTime->UpdateGameTime();
+			m_fps += m_GameTime->getElapsedGameTime().getMilliseconds();
+			if( m_fps > 1000 / 60)
 			{
+				m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0);
+				if(m_lpDirect3DDevice->BeginScene())
+				{
+					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
 
-				//m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
+					//sprite->UpdateAnimation(m_GameTime, 100);
+					
+					//sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3( 0, 0, 0));
 
-				////sprite->UpdateAnimation(m_GameTime, 100);
-				//
-				////sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
-				//sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3( 0, 0, 0));
-				//
+					m_lpSpriteDirect3DHandle->End();
 
-				//m_lpSpriteDirect3DHandle->End();
-
-				m_lpDirect3DDevice->EndScene();
+					m_lpDirect3DDevice->EndScene();
+				}
+				m_lpDirect3DDevice->Present( 0, 0, 0, 0);
+				m_fps = 0;
 			}
-			m_lpDirect3DDevice->Present( 0, 0, 0, 0);
-		}
+		}		
 	}
 }
 
