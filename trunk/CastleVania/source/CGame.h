@@ -35,7 +35,10 @@ protected:
 	bool				InitializDirect3DSpriteHandle ();
 	//sprite use for testing
 	CSpriteDx9*			sprite;
-
+	// GameTime in Game
+	CGameTimeDx9*		m_GameTime;
+	// fps in Game
+	int					m_fps;
 
 public:
 	//---------------------------------------------------
