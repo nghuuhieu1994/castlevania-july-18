@@ -40,5 +40,7 @@ void CSpriteDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)
 void CSpriteDx9::Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location)
 {
 		this->m_MyTexture->setRECT(this->m_MyAnimation->getRect());
+//<<<<<<< .mine
+//		this->m_MyTexture->RenderTexture(_SpriteBatch, m_MyAnimation->getRect(), _Location);
 		this->m_MyTexture->RenderTexture(_SpriteBatch, m_MyAnimation->getRect(), new D3DXVECTOR3(0, 0, 0));
 }

@@ -26,9 +26,8 @@ private:
 public:
 	// Cosntructor none Parameter
 	CTextureDx9();
-	// Constructor 2 parametor position and fileName
 
-	
+	// Constructor 2 parametor position and fileName
 	CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName, D3DCOLOR color);
 	// constructor cpy
 	CTextureDx9(const CTextureDx9* textureDx9);

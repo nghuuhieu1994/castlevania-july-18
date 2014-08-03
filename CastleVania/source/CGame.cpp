@@ -169,7 +169,7 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	this->InitializDirect3DSpriteHandle();
 	//m_GameTime = new CGameTimeDx9();
 
-	sprite = new CSpriteDx9(new D3DXVECTOR3(0, 0, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);
+	sprite = new CSpriteDx9(new D3DXVECTOR3(200, 200, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);
 	sprite->LoadContent(m_lpDirect3DDevice);
 	return true;
 }
@@ -196,15 +196,15 @@ void CGame::Run()
 			if(m_lpDirect3DDevice->BeginScene())
 			{
 
-				m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
+				//m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
 
-				//sprite->UpdateAnimation(m_GameTime, 100);
-				
-				//sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
-				sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3( 0, 0, 0));
-				
+				////sprite->UpdateAnimation(m_GameTime, 100);
+				//
+				////sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
+				//sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3( 0, 0, 0));
+				//
 
-				m_lpSpriteDirect3DHandle->End();
+				//m_lpSpriteDirect3DHandle->End();
 
 				m_lpDirect3DDevice->EndScene();
 			}
