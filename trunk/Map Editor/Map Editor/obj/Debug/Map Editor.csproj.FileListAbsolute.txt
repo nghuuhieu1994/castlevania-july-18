@@ -1,9 +1,0 @@
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\bin\Debug\Map Editor.exe.config
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\bin\Debug\Map Editor.exe
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\bin\Debug\Map Editor.pdb
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\obj\Debug\Map Editor.csprojResolveAssemblyReference.cache
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\obj\Debug\Map_Editor.MainForm.resources
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\obj\Debug\Map_Editor.Properties.Resources.resources
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\obj\Debug\Map Editor.csproj.GenerateResource.Cache
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\obj\Debug\Map Editor.exe
-D:\Projects\SVN-Sever\Castle Vania\Map Editor\Map Editor\obj\Debug\Map Editor.pdb
