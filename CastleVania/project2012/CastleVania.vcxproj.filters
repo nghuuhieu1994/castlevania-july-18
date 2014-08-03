@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\EntryPoint.cpp" />
+    <ClCompile Include="..\source\CGame.cpp">
+      <Filter>SourceFile\CGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CGameTimeDx9.cpp">
+      <Filter>SourceFile\CGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CTimeSpanDx9.cpp">
+      <Filter>SourceFile\CGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameLog.cpp">
+      <Filter>SourceFile\GameLog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CGlobal.cpp">
+      <Filter>SourceFile\CGlobal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CSpriteDx9.cpp">
+      <Filter>SourceFile\Graphics\CSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CAnimationDx9.cpp">
+      <Filter>SourceFile\Graphics\CSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CSurfaceDx9.cpp">
+      <Filter>SourceFile\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CTextureDx9.cpp">
+      <Filter>SourceFile\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\RectangleDx9.cpp">
+      <Filter>SourceFile\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\VectorDx9.cpp">
+      <Filter>SourceFile\Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\CGame.h">
+      <Filter>HeaderFile\CGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CTimeSpanDx9.h">
+      <Filter>HeaderFile\CGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CGameTimeDx9.h">
+      <Filter>HeaderFile\CGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameLog.h">
+      <Filter>HeaderFile\GameLog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CGlobal.h">
+      <Filter>HeaderFile\CGlobal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CSpriteDx9.h">
+      <Filter>HeaderFile\Graphics\CSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CAnimationDx9.h">
+      <Filter>HeaderFile\Graphics\CSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CSurfaceDx9.h">
+      <Filter>HeaderFile\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CTextureDx9.h">
+      <Filter>HeaderFile\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\VectorDx9.h">
+      <Filter>HeaderFile\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\RectangleDx9.h">
+      <Filter>HeaderFile\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundsManagerDx9.h">
+      <Filter>HeaderFile\Manager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\source\gamelog.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="HeaderFile">
+      <UniqueIdentifier>{b15fd7e7-93af-4abe-a51d-c6d1b0ba380f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\CGame">
+      <UniqueIdentifier>{d3e282ba-e3a0-4219-9144-b2e398ab3e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile">
+      <UniqueIdentifier>{54db6eca-c987-4012-806b-6c143cfb921a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\CGame">
+      <UniqueIdentifier>{dc470069-b411-4a69-ab21-2a64db77e406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\GameLog">
+      <UniqueIdentifier>{0dcff77b-f720-4807-89d3-f20eb63b3a31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameLog">
+      <UniqueIdentifier>{d0ec1b65-9306-4538-a7f6-9bf954ac298b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\CGlobal">
+      <UniqueIdentifier>{a0318142-d0e6-480d-836a-a2cef5d0309a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\CGlobal">
+      <UniqueIdentifier>{3cb6528d-3eae-4ca9-9101-302789bf0705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Graphics">
+      <UniqueIdentifier>{27104f0b-c402-4627-899b-84290cc24fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Graphics">
+      <UniqueIdentifier>{f5a32bfd-e01e-49e4-828f-8f9472c8aeac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Graphics\CSprite">
+      <UniqueIdentifier>{7cd98483-23c7-4b84-b30e-4dc2003df016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Graphics\CSprite">
+      <UniqueIdentifier>{14de8755-fcc4-40f8-be18-6b22998f9c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Manager">
+      <UniqueIdentifier>{31da587b-5171-496c-8ee5-6a178005bafd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Manager">
+      <UniqueIdentifier>{7545a4e8-b3d9-445b-b4ce-4bf6bd8da988}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
