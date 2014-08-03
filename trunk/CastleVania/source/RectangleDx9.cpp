@@ -27,6 +27,7 @@ RECT RectangleDx9::getRECT()
 {
 	return m_Rect;
 }
+
 RectangleDx9::~RectangleDx9()
 {
 
