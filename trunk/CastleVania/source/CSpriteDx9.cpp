@@ -6,10 +6,10 @@ CSpriteDx9::CSpriteDx9()
 }
 CSpriteDx9::CSpriteDx9(D3DXVECTOR3* Position, LPCSTR fileName, D3DCOLOR color, int ColFrame, int RowFrame, int TotalFrame)
 {
-	this->m_MyTexture = new CTextureDx9(Position, fileName, color);
-	this->m_ColFrame = ColFrame;
-	this->m_RowFrame = RowFrame;
-	this->m_TotalFrame = TotalFrame;
+	this->m_MyTexture	= new CTextureDx9(Position, fileName, color);
+	this->m_ColFrame	= ColFrame;
+	this->m_RowFrame	= RowFrame;
+	this->m_TotalFrame	= TotalFrame;
 }
 void CSpriteDx9::LoadContent(LPDIRECT3DDEVICE9 _lpDirectDevice)
 {
@@ -40,5 +40,5 @@ void CSpriteDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)
 void CSpriteDx9::Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location)
 {
 		this->m_MyTexture->setRECT(this->m_MyAnimation->getRect());
-		this->m_MyTexture->RenderTexture(_SpriteBatch, m_MyAnimation->getRect(), &D3DXVECTOR3(0, 0, 0));
+		this->m_MyTexture->RenderTexture(_SpriteBatch, m_MyAnimation->getRect(), new D3DXVECTOR3(0, 0, 0));
 }
