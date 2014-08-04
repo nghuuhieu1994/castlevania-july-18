@@ -23,6 +23,9 @@ private:
 	RectangleDx9*		m_SourceRect;
 	// COLOR
 	D3DCOLOR			m_Color;
+
+	int					m_alphaRender;
+	int					m_alphaOffsetPerFrame;
 public:
 	// Cosntructor none Parameter
 	CTextureDx9();

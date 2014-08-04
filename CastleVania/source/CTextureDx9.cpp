@@ -44,7 +44,6 @@ LPDIRECT3DTEXTURE9 CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9	_lpDirect
 
 CTextureDx9::CTextureDx9() : m_lpDTexture(NULL), m_SourceRect(NULL)
 {
-	//this->m_lpDTexture = NULL;
 	
 }
 CTextureDx9::CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName, D3DCOLOR color)
@@ -55,6 +54,8 @@ CTextureDx9::CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName, D3DCOLOR color)
 	this->m_Center = NULL;
 	this->m_Color = color;
 	m_Center = new D3DXVECTOR3(0, 0, 0);
+	m_alphaRender = 255;
+	m_alphaOffsetPerFrame = -5;
 }
 CTextureDx9::CTextureDx9(const CTextureDx9* textureDx9)
 {
@@ -98,16 +99,43 @@ void CTextureDx9::RenderTexture(LPD3DXSPRITE SpriteBatch, RECT* SourceRectangle,
 		CGameLog::GetInstance("CTextureDx9Render")->SaveError("Can't find lpDSprire to render");
 		return;
 	}
-
-	m_Center->x			= 0;
-	m_Center->y			= 0;
-	m_Center->z			= 0;
+	D3DXMATRIX matRotate;
 	
+	D3DXMatrixIdentity(&matRotate);
+	m_alphaRender += m_alphaOffsetPerFrame;
+	if(m_alphaRender < 5 || m_alphaRender > 250)
+	{
+		m_alphaOffsetPerFrame *= -1;
+	}
+	/*D3DXVECTOR2 vCenter((int)getINFO().Width/2, (int)getINFO().Height/2);
+	D3DXVECTOR2 vPosition( 0 ,0);
+	D3DXMatrixTransformation2D(&matRotate, NULL, NULL, NULL, &vCenter, 3.1415f, &vPosition);*/
+	//m_Center = new D3DXVECTOR3(getINFO().Width/2, getINFO().Height/2, 0);
+	
+	//matRotate._11 = -1;//cos(180)
+	//matRotate._33 = -1;//cos(180)
+	//matRotate._13 = 0;//-sin(180)
+	//matRotate._31 = 0;//sin(180)
+
+	//matRotate._41 = -200;
+	//matRotate._42 = 100;
+
+	//SpriteBatch->SetTransform(&matRotate);
+	
+	/*m_Center->x			= 0;
+	m_Center->y			= 0;
+	m_Center->z			= 0;*/
+	//set transformation matrix
+    
+	//Location->x = Location->x - getINFO().Width;
+	DWORD AlphaValue;
+	AlphaValue = D3DCOLOR_ARGB(m_alphaRender,255,255,255);  	
 	SpriteBatch->Draw(
 		this->m_lpDTexture, 
 		SourceRectangle,
 		m_Center,
 		Location,
-		0xFFFFFFFF);
+		AlphaValue);
+
 	//delete m_Center;
 }

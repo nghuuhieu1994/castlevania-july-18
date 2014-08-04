@@ -18,7 +18,7 @@ private:
 				// Time to render next frame
 				//int		m_TimeNextFrame;
 	// Local time to make animation
-	int		m_LocalTime;
+	float		m_LocalTime;
 	// Rect using for render an frame
 	RECT*	m_Rect;
 	// index current frame u wanna render

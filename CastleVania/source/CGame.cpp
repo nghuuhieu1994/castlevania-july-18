@@ -133,12 +133,12 @@ bool CGame::InitializeDirect3DDevice(bool isWindowed)
 	}
 
 	m_lpDirect3D->CreateDevice(
-		D3DADAPTER_DEFAULT,
-		D3DDEVTYPE_HAL,
-		m_handleWindow,
-		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
-		&d3dpp,
-		&m_lpDirect3DDevice);
+			  D3DADAPTER_DEFAULT,
+			  D3DDEVTYPE_HAL,//DON'T USE D3DDEVTYPE_REF BECAUSE YOU WILL REGRET IN REST OF YOUR LIFE EVERYTIME YOU PLAY THIS GAME
+			  m_handleWindow,
+			  D3DCREATE_HARDWARE_VERTEXPROCESSING,
+			  &d3dpp,
+			  &m_lpDirect3DDevice);
 
 	if(FAILED(m_lpDirect3DDevice))
 	{
@@ -176,7 +176,7 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 
 	this->sprite = new CSpriteDx9(new D3DXVECTOR3(200, 200, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);
 	this->sprite->LoadContent(m_lpDirect3DDevice);
-	this->Mario = new CSpriteDx9(new D3DXVECTOR3(100, 100, 0), "resources\\MarioSuper.png", 0xFFFFFFFF, 6, 1, 6);
+	this->Mario = new CSpriteDx9(new D3DXVECTOR3(64, 64, 0), "resources/simon.png", 0xFFFFFFFF, 8, 3, 24);
 	this->Mario->LoadContent(m_lpDirect3DDevice);
 	this->Mario->getAnimation()->setStartFrame(0);
 	this->Mario->getAnimation()->setEndFrame(2);
@@ -203,10 +203,17 @@ void CGame::Run()
 		{
 			m_GameTime->UpdateGameTime();
 			m_fps += m_GameTime->getElapsedGameTime().getMilliseconds();
-
 			if( m_fps > 1000 / 60)
 			{
-				m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0);
+				/*if((int)m_GameTime->getElapsedGameTime().getMilliseconds()%2 == 0)
+				{
+					m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0); 
+				}
+				else
+				{
+					m_lpDirect3DDevice->Clear(0 , 0, D3DCLEAR_TARGET,D3DCOLOR_XRGB( 255, 255, 255), 1.0f, 0); 
+				}*/
+				m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0); 
 				if(m_lpDirect3DDevice->BeginScene())
 				{
 					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
@@ -214,7 +221,7 @@ void CGame::Run()
 					//sprite->UpdateAnimation(m_GameTime, 100);
 					Mario->UpdateAnimation(m_GameTime, 100);
 					//sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
-					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3( 0, 0, 0));
+					//sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));
 					Mario->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));
 					m_lpSpriteDirect3DHandle->End();
 
@@ -223,6 +230,7 @@ void CGame::Run()
 				m_lpDirect3DDevice->Present( 0, 0, 0, 0);
 				m_fps = 0;
 			}
+			
 		}		
 	}
 }

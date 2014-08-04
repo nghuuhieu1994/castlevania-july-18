@@ -27,12 +27,14 @@ public:
 	CSpriteDx9(const CSpriteDx9* otherSprite);
 	void UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation);
 	void LoadContent(LPDIRECT3DDEVICE9 _lpDirectDevice);
+	void Effect(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* center, D3DXVECTOR3* location);
 	//void Render(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite);
 	CAnimationDx9* getAnimation();
 	//---------------------------------------------------
 	/// This function contains blablabla...
 	//---------------------------------------------------
 	void Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location);
+	//void Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, D3DXCOLOR color, float rotate, D3DXVECTOR3 center, D3DXVECTOR3 scale,);
 };
 
 

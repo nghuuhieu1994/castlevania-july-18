@@ -81,6 +81,7 @@
     <ClCompile Include="..\source\EntryPoint.cpp" />
     <ClCompile Include="..\source\GameLog.cpp" />
     <ClCompile Include="..\source\RectangleDx9.cpp" />
+    <ClCompile Include="..\source\SpriteEffect.cpp" />
     <ClCompile Include="..\source\VectorDx9.cpp" />
     <ClCompile Include="CSoundsManagerDx9.cpp" />
   </ItemGroup>
@@ -96,6 +97,7 @@
     <ClInclude Include="..\source\CTimeSpanDx9.h" />
     <ClInclude Include="..\source\GameLog.h" />
     <ClInclude Include="..\source\RectangleDx9.h" />
+    <ClInclude Include="..\source\SpriteEffect.h" />
     <ClInclude Include="..\source\VectorDx9.h" />
   </ItemGroup>
   <ItemGroup>
