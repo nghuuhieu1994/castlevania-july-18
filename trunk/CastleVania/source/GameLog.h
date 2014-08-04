@@ -24,6 +24,7 @@ public:
 	void SaveInfo(string Information);
 	//Save Error in Game log file
 	void SaveError(string Error);
+	void SaveFloatNumber(float Number);
 	//Get Current Date and Time
 	string GetCurrentDate();
 private:
