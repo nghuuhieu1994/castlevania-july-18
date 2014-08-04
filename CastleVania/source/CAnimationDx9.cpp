@@ -8,7 +8,7 @@ CAnimationDx9::CAnimationDx9()
 	this->m_FrameHeight			= 0;
 	this->m_FrameWidth			= 0;
 	this->m_Rect				= NULL;
-	this->m_TimeNextFrame		= 0;
+	//this->m_TimeNextFrame		= 0;
 	this->m_TotalFrame			= 0;
 	this->startFrame			= 0;
 	this->m_LocalTime			= 0;
@@ -30,7 +30,7 @@ CAnimationDx9::CAnimationDx9(int widthFrame, int heightFrame, int totalFrame, in
 	this->m_Rect->bottom		= m_FrameHeight + m_Rect->top;
 	this->m_Rect->right			= m_FrameWidth + m_Rect->left;
 	
-	this->m_TimeNextFrame		= 100;
+	//this->m_TimeNextFrame		= 100;
 	this->m_TotalFrame			= 1;
 	this->m_LocalTime			= 0;
 }
@@ -44,7 +44,7 @@ CAnimationDx9::CAnimationDx9(const CAnimationDx9* otherAnimation)
 	this->m_FrameWidth		= otherAnimation->m_FrameWidth;
 	this->m_LocalTime		= otherAnimation->m_LocalTime;
 	this->m_Rect			= new RECT(*otherAnimation->m_Rect);
-	this->m_TimeNextFrame	= otherAnimation->m_TimeNextFrame;
+	//this->m_TimeNextFrame	= otherAnimation->m_TimeNextFrame;
 	this->m_TotalFrame		= otherAnimation->m_TotalFrame;
 	this->startFrame		= otherAnimation->startFrame;
 }
@@ -71,7 +71,7 @@ RECT* CAnimationDx9::getRect()
 void CAnimationDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)
 {
 	m_LocalTime += gameTime->getElapsedGameTime().getMilliseconds();
-	if(m_LocalTime > m_TimeNextFrame)
+	if(m_LocalTime > timeAnimation)
 	{
 		this->nextFrame();
 		m_LocalTime = 0;

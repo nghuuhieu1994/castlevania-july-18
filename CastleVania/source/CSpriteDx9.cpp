@@ -29,6 +29,11 @@ void CSpriteDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)
 {
 	this->m_MyAnimation->UpdateAnimation(gameTime, timeAnimation); 
 }
+
+CAnimationDx9* CSpriteDx9::getAnimation()
+{
+	return this->m_MyAnimation;
+}
 //
 //void CSpriteDx9::Render(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite)
 //{

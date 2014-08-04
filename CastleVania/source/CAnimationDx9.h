@@ -15,8 +15,8 @@ private:
 	int		m_Col;
 	// Total frame in sheet
 	int		m_TotalFrame;
-	// Time to render next frame
-	int		m_TimeNextFrame;
+				// Time to render next frame
+				//int		m_TimeNextFrame;
 	// Local time to make animation
 	int		m_LocalTime;
 	// Rect using for render an frame
