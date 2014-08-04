@@ -28,7 +28,7 @@ public:
 	void UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation);
 	void LoadContent(LPDIRECT3DDEVICE9 _lpDirectDevice);
 	//void Render(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite);
-
+	CAnimationDx9* getAnimation();
 	//---------------------------------------------------
 	/// This function contains blablabla...
 	//---------------------------------------------------

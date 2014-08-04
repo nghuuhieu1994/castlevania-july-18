@@ -35,6 +35,9 @@
     <ClCompile Include="..\source\VectorDx9.cpp">
       <Filter>SourceFile\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="CSoundsManagerDx9.cpp">
+      <Filter>SourceFile\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\CGame.h">
@@ -70,7 +73,7 @@
     <ClInclude Include="..\source\RectangleDx9.h">
       <Filter>HeaderFile\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="CSoundsManagerDx9.h">
+    <ClInclude Include="..\source\CSoundsManagerDx9.h">
       <Filter>HeaderFile\Manager</Filter>
     </ClInclude>
   </ItemGroup>

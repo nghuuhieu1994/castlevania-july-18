@@ -35,10 +35,14 @@ protected:
 	bool				InitializDirect3DSpriteHandle ();
 	//sprite use for testing
 	CSpriteDx9*			sprite;
+	// Sprite Mario Demo
+	CSpriteDx9*			Mario;
 	// GameTime in Game
 	CGameTimeDx9*		m_GameTime;
 	// fps in Game
 	int					m_fps;
+	// fps string
+	char				fps[10];
 
 public:
 	//---------------------------------------------------

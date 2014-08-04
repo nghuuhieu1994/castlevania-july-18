@@ -1,7 +1,7 @@
 #include "CGame.h"
 #include "GameLog.h"
 #include <d3dtypes.h>
-
+#include <stdlib.h>
 CGame::CGame() : 
 	m_handleWindow(NULL), 
 	m_lpDirect3D(NULL), 
@@ -45,6 +45,8 @@ bool CGame::InitializeHandleWindow(HINSTANCE hInstance)
 		CGameLog::GetInstance("CGame")->SaveError("Can't Regist the WndcEx!!!");
 		return false;
 	}
+
+	//sprintf(fps, "%f", m_fps);
 
 	m_handleWindow = CreateWindow(
 		"CGame",
@@ -174,6 +176,10 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 
 	this->sprite = new CSpriteDx9(new D3DXVECTOR3(200, 200, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);
 	this->sprite->LoadContent(m_lpDirect3DDevice);
+	this->Mario = new CSpriteDx9(new D3DXVECTOR3(100, 100, 0), "resources\\MarioSuper.png", 0xFFFFFFFF, 6, 1, 6);
+	this->Mario->LoadContent(m_lpDirect3DDevice);
+	this->Mario->getAnimation()->setStartFrame(0);
+	this->Mario->getAnimation()->setEndFrame(2);
 	return true;
 }
 
@@ -197,6 +203,7 @@ void CGame::Run()
 		{
 			m_GameTime->UpdateGameTime();
 			m_fps += m_GameTime->getElapsedGameTime().getMilliseconds();
+
 			if( m_fps > 1000 / 60)
 			{
 				m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0);
@@ -205,10 +212,10 @@ void CGame::Run()
 					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
 
 					//sprite->UpdateAnimation(m_GameTime, 100);
-					
+					Mario->UpdateAnimation(m_GameTime, 100);
 					//sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
 					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3( 0, 0, 0));
-
+					Mario->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));
 					m_lpSpriteDirect3DHandle->End();
 
 					m_lpDirect3DDevice->EndScene();

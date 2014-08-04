@@ -4,7 +4,7 @@
 #define			WIDTH		800
 #define			HEIGHT		600
 #define			FRAME_RATE	60
-#define			GAMETITLE	"Castlevaia Dx"
+#define			GAMETITLE	"Tran Danh"
 	
 class CGlobal
 {
