@@ -69,6 +69,17 @@ void CGameLog::SaveInfo(string Information)
     fLog.close();
 }
 
+void CGameLog::SaveFloatNumber(float Number)
+{
+	fstream fLog(m_LogFileName.c_str(), ios::out | ios::app);
+
+	fLog << "[" << this->GetCurrentDate() << "]" << endl;
+	fLog << "Current Working Module: " << m_CurrentModuleName << endl;
+    fLog << "ElapsedMillisecond : " << Number << endl << endl;
+
+    fLog.close();
+}
+
 void CGameLog::SaveError(string Error)
 {
 	fstream fLog(m_LogFileName.c_str(), ios::out | ios::app);
