@@ -38,6 +38,9 @@
     <ClCompile Include="CSoundsManagerDx9.cpp">
       <Filter>SourceFile\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\SpriteEffect.cpp">
+      <Filter>SourceFile\Graphics\CSprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\CGame.h">
@@ -75,6 +78,9 @@
     </ClInclude>
     <ClInclude Include="..\source\CSoundsManagerDx9.h">
       <Filter>HeaderFile\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\SpriteEffect.h">
+      <Filter>HeaderFile\Graphics\CSprite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

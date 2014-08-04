@@ -4,9 +4,9 @@
 #include <d3d9.h>
 #include <iostream>
 #include "CGlobal.h"
-#include "CTextureDx9.h"
 #include "CSpriteDx9.h"
 #include "CGameTimeDx9.h"
+
 using namespace std;
 
 class CGame
@@ -24,8 +24,8 @@ protected:
 	LPDIRECT3DDEVICE9	m_lpDirect3DDevice;
 	//Pointer of Microsft Direct3D Sprite Interface, have a bunch of method to process sprite
 	LPD3DXSPRITE		m_lpSpriteDirect3DHandle;
-
-
+	CGameTimeDx9*		m_GameTime;
+	
 	//Initialize Window Of Game
 	bool				InitializeHandleWindow (HINSTANCE);
 
@@ -38,9 +38,9 @@ protected:
 	// Sprite Mario Demo
 	CSpriteDx9*			Mario;
 	// GameTime in Game
-	CGameTimeDx9*		m_GameTime;
+	
 	// fps in Game
-	int					m_fps;
+	float					m_fps;
 	// fps string
 	char				fps[10];
 
@@ -65,8 +65,8 @@ public:
 	//---------------------------------------------------
 	/// @description Initialize CGame instance
 	/// @param handleInstance reference to Handle of Program in Main function
-	/// @param isWindowed specified Width of Screen ( default is 800)
-	/// @return void
+	/// @param isWindowed use for checking game play in windowed or fullscreen
+	/// @return bool for checking error
 	/// @warning handleInstance can't be NULL
 	//---------------------------------------------------
 	bool Initialize (HINSTANCE handleInstance, bool isWindowed);

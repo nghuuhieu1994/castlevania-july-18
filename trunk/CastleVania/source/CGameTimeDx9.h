@@ -6,13 +6,13 @@
 class CGameTimeDx9
 {
 private:
-	// TimeSpan Elapsed =))
+	
 	CTimeSpanDx9	m_ElapsedGameTime;
-	// TimeSpan Total =))
+	
 	CTimeSpanDx9	m_TotalGameTime;
-	// store Query of Time =))
+	
 	LARGE_INTEGER	m_Query;
-	// =)) Cái này để chuyển đổi tỷ lệ cho Time
+	
 	float			m_FreQuency;
 	// start time Ticks
 	UINT64			StartTicks;
