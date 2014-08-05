@@ -4,7 +4,7 @@
 #include <d3dx9.h>
 #include "CTextureDx9.h"
 #include "CAnimationDx9.h"
-
+#include "SpriteEffect.h"
 //class CAnimationDx9;
 
 class CSpriteDx9
@@ -34,7 +34,7 @@ public:
 	/// This function contains blablabla...
 	//---------------------------------------------------
 	void Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location);
-	//void Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, D3DXCOLOR color, float rotate, D3DXVECTOR3 center, D3DXVECTOR3 scale,);
+	void Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, D3DXCOLOR color, float rotate, D3DXVECTOR3 center, D3DXVECTOR3 scale, SpriteEffect (*effect)());
 };
 
 

@@ -103,7 +103,7 @@ void CTextureDx9::RenderTexture(LPD3DXSPRITE SpriteBatch, RECT* SourceRectangle,
 	
 	D3DXMatrixIdentity(&matRotate);
 	m_alphaRender += m_alphaOffsetPerFrame;
-	if(m_alphaRender < 5 || m_alphaRender > 250)
+	if(m_alphaRender < 50 || m_alphaRender > 250)
 	{
 		m_alphaOffsetPerFrame *= -1;
 	}
