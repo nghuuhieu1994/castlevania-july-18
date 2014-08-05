@@ -35,11 +35,14 @@
     <ClCompile Include="..\source\VectorDx9.cpp">
       <Filter>SourceFile\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="CSoundsManagerDx9.cpp">
-      <Filter>SourceFile\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\SpriteEffect.cpp">
       <Filter>SourceFile\Graphics\CSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CSoundsManagerDx9.cpp">
+      <Filter>SourceFile\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CInputDx9.cpp">
+      <Filter>SourceFile\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="..\source\SpriteEffect.h">
       <Filter>HeaderFile\Graphics\CSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\CInputDx9.h">
+      <Filter>HeaderFile\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +134,12 @@
     </Filter>
     <Filter Include="SourceFile\Manager">
       <UniqueIdentifier>{7545a4e8-b3d9-445b-b4ce-4bf6bd8da988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Input">
+      <UniqueIdentifier>{17488ddc-77f9-46cf-b83e-2c34ead9c283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Input">
+      <UniqueIdentifier>{545c8299-3f68-4af7-b563-0b15824f654f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
