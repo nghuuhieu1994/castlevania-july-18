@@ -6,6 +6,7 @@
 #include "CGlobal.h"
 #include "CSpriteDx9.h"
 #include "CGameTimeDx9.h"
+#include "SpriteEffect.h"
 
 using namespace std;
 

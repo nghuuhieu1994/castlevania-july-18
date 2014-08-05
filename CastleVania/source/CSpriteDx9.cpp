@@ -90,12 +90,15 @@ void CSpriteDx9::Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location)
 		AlphaValue);
 }
 
-void CSpriteDx9::Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, SpriteEffect(*effect)(D3DXMATRIX*))
+void CSpriteDx9::Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, void(*spriteEffect)(D3DXMATRIX*, RECT* frameRect))
 {
 	D3DXMATRIX matrixTransform;
 
 	D3DXMatrixIdentity(&matrixTransform);
-	effect(&matrixTransform);
+	spriteEffect(&matrixTransform, &m_listSourceRectangle.at(0));
+
+	spriteBatch->SetTransform(&matrixTransform);
+	
 	DWORD AlphaValue;
 	AlphaValue = D3DCOLOR_ARGB(255, 255, 255, 255);
 	spriteBatch->Draw(

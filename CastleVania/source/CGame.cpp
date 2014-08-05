@@ -222,10 +222,9 @@ void CGame::Run()
 					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
 
 					sprite->UpdateAnimation(m_GameTime, 100);
-					/*Mario->UpdateAnimation(m_GameTime, 100);*/
-					//sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
-					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));
-					/*Mario->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));*/
+					
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0), SpriteEffect::None);
+					
 					m_lpSpriteDirect3DHandle->End();
 
 					m_lpDirect3DDevice->EndScene();
@@ -233,7 +232,6 @@ void CGame::Run()
 				m_lpDirect3DDevice->Present( 0, 0, 0, 0);
 				m_fps = 0;
 			}
-			
 		}		
 	}
 }
