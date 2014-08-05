@@ -51,7 +51,7 @@ public:
 	/// This function contains blablabla...
 	//---------------------------------------------------
 	void Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location);
-	void Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, SpriteEffect(*effect)(D3DXMATRIX*));
+	void Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, void(*spriteEffect)(D3DXMATRIX*, RECT* frameRect));
 };
 
 
