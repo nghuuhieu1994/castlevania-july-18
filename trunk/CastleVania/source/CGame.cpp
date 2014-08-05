@@ -174,12 +174,15 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	this->m_GameTime->InitGameTime();
 	this->m_fps = 0;
 
-	this->sprite = new CSpriteDx9(new D3DXVECTOR3(200, 200, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);
-	this->sprite->LoadContent(m_lpDirect3DDevice);
-	this->Mario = new CSpriteDx9(new D3DXVECTOR3(64, 64, 0), "resources/simon.png", 0xFFFFFFFF, 8, 3, 24);
-	this->Mario->LoadContent(m_lpDirect3DDevice);
-	this->Mario->getAnimation()->setStartFrame(0);
-	this->Mario->getAnimation()->setEndFrame(2);
+	/*this->sprite = new CSpriteDx9(new D3DXVECTOR3(200, 200, 0),"resources/background1.png",0xFFFFFFFF, 1, 1, 1);*/
+	//this->sprite->LoadContent(m_lpDirect3DDevice);
+	/*this->Mario = new CSpriteDx9(new D3DXVECTOR3(64, 64, 0), "resources/simon.png", 0xFFFFFFFF, 8, 3, 24);*/
+	//this->Mario->LoadContent(m_lpDirect3DDevice);
+	/*this->Mario->getAnimation()->setStartFrame(0);
+	this->Mario->getAnimation()->setEndFrame(2);*/
+	this->sprite = new CSpriteDx9();
+	this->sprite->InitializeSpriteData(60, 66, 8, 3, 24);
+	this->sprite->LoadTexture(m_lpDirect3DDevice, "resources/simon.png");
 	return true;
 }
 
@@ -218,11 +221,11 @@ void CGame::Run()
 				{
 					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
 
-					//sprite->UpdateAnimation(m_GameTime, 100);
-					Mario->UpdateAnimation(m_GameTime, 100);
+					sprite->UpdateAnimation(m_GameTime, 100);
+					/*Mario->UpdateAnimation(m_GameTime, 100);*/
 					//sprite->Render(m_LPDirect3DDevice, m_LPSpriteDirect3DHandle);
-					//sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));
-					Mario->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));
+					/*Mario->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0));*/
 					m_lpSpriteDirect3DHandle->End();
 
 					m_lpDirect3DDevice->EndScene();

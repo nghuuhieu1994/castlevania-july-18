@@ -12,7 +12,7 @@ private:
 	// Lp to an instance of interface D3DTexture
 	LPDIRECT3DTEXTURE9	m_lpDTexture;
 	// Link to file Image
-	LPCSTR				m_fileName;
+	//LPCSTR				m_fileName;
 	// include all info of the Image
 	D3DXIMAGE_INFO		m_Info;
 	// Position of this texture in game
@@ -24,8 +24,7 @@ private:
 	// COLOR
 	D3DCOLOR			m_Color;
 
-	int					m_alphaRender;
-	int					m_alphaOffsetPerFrame;
+	
 public:
 	// Cosntructor none Parameter
 	CTextureDx9();
@@ -35,7 +34,9 @@ public:
 	// constructor cpy
 	CTextureDx9(const CTextureDx9* textureDx9);
 	// Load texture from file
-	LPDIRECT3DTEXTURE9 LoadTextureFromeFile(LPDIRECT3DDEVICE9 _lpDirectDevice);
+	//LPDIRECT3DTEXTURE9 LoadTextureFromeFile(LPDIRECT3DDEVICE9 _lpDirectDevice);
+
+	void LoadTextureFromeFile(LPDIRECT3DDEVICE9 lpDirectDevice, LPCSTR	fileName);
 	// Return the info of this image
 	D3DXIMAGE_INFO getINFO();
 	// set RECT
