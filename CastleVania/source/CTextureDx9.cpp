@@ -1,18 +1,19 @@
 #include "CTextureDx9.h"
 #include "GameLog.h"
-LPDIRECT3DTEXTURE9 CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9	_lpDirectDevice)
+
+void CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9 lpDirectDevice, LPCSTR	fileName)
 {
 	HRESULT hr;
-	hr = D3DXGetImageInfoFromFile(m_fileName, &m_Info);
+	hr = D3DXGetImageInfoFromFile(fileName, &m_Info);
 	if(FAILED(hr))
 	{
 		CGameLog::GetInstance("CTextureDx9")->SaveError("Can't get Image info frome file");
-		return NULL;
+		return;
 	}
 
 	hr = D3DXCreateTextureFromFileEx(
-		_lpDirectDevice,
-		m_fileName,
+		lpDirectDevice,
+		fileName,
 		m_Info.Width,
 		m_Info.Height,
 		1,
@@ -29,17 +30,8 @@ LPDIRECT3DTEXTURE9 CTextureDx9::LoadTextureFromeFile(LPDIRECT3DDEVICE9	_lpDirect
 	if(FAILED(hr))
 	{
 		CGameLog::GetInstance("CTextureDx9")->SaveError("Can't Create Texture from file");
-		return NULL;
+		return;
 	}
-
-	this->m_SourceRect = 
-		new RectangleDx9(
-						0, 
-						0, 
-						m_Info.Height,
-						m_Info.Width);
-
-	return this->m_lpDTexture;
 }
 
 CTextureDx9::CTextureDx9() : m_lpDTexture(NULL), m_SourceRect(NULL)
@@ -49,18 +41,16 @@ CTextureDx9::CTextureDx9() : m_lpDTexture(NULL), m_SourceRect(NULL)
 CTextureDx9::CTextureDx9(D3DXVECTOR3* position, LPCSTR fileName, D3DCOLOR color)
 {
 	this->m_Position = new D3DXVECTOR3(*position);
-	this->m_fileName = fileName;
+	//this->m_fileName = fileName;
 	this->m_lpDTexture = NULL;
 	this->m_Center = NULL;
 	this->m_Color = color;
 	m_Center = new D3DXVECTOR3(0, 0, 0);
-	m_alphaRender = 255;
-	m_alphaOffsetPerFrame = -5;
 }
 CTextureDx9::CTextureDx9(const CTextureDx9* textureDx9)
 {
 	m_lpDTexture = *(new LPDIRECT3DTEXTURE9(textureDx9->m_lpDTexture));
-	this->m_fileName = NULL;
+	//this->m_fileName = NULL;
 }
 
 D3DXIMAGE_INFO CTextureDx9::getINFO()
@@ -102,11 +92,11 @@ void CTextureDx9::RenderTexture(LPD3DXSPRITE SpriteBatch, RECT* SourceRectangle,
 	D3DXMATRIX matRotate;
 	
 	D3DXMatrixIdentity(&matRotate);
-	m_alphaRender += m_alphaOffsetPerFrame;
+	/*m_alphaRender += m_alphaOffsetPerFrame;
 	if(m_alphaRender < 50 || m_alphaRender > 250)
 	{
 		m_alphaOffsetPerFrame *= -1;
-	}
+	}*/
 	/*D3DXVECTOR2 vCenter((int)getINFO().Width/2, (int)getINFO().Height/2);
 	D3DXVECTOR2 vPosition( 0 ,0);
 	D3DXMatrixTransformation2D(&matRotate, NULL, NULL, NULL, &vCenter, 3.1415f, &vPosition);*/
@@ -129,7 +119,7 @@ void CTextureDx9::RenderTexture(LPD3DXSPRITE SpriteBatch, RECT* SourceRectangle,
     
 	//Location->x = Location->x - getINFO().Width;
 	DWORD AlphaValue;
-	AlphaValue = D3DCOLOR_ARGB(m_alphaRender,255,255,255);  	
+	AlphaValue = D3DCOLOR_ARGB(255,255,255,255);  	
 	SpriteBatch->Draw(
 		this->m_lpDTexture, 
 		SourceRectangle,
