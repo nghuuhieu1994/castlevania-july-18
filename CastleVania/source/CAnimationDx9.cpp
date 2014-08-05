@@ -5,6 +5,7 @@ CAnimationDx9::CAnimationDx9()
 	curFrame = 0;
 	startFrame = 5;
 	endFrame = 7;
+	m_LocalTime = 0;
 }
 CAnimationDx9::CAnimationDx9(int widthFrame, int heightFrame, int totalFrame, int colFrame, int rowFrame)
 {
@@ -50,7 +51,10 @@ void CAnimationDx9::setEndFrame(int endframe)
 void CAnimationDx9::nextFrame()
 {
 	this->curFrame++;
-	curFrame %= 23;
+	if(this->curFrame > this->endFrame || this->curFrame < this->startFrame)
+	{
+		this->curFrame = this->startFrame;
+	}
 }
 
 void CAnimationDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)
