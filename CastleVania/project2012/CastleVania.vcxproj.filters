@@ -44,6 +44,12 @@
     <ClCompile Include="..\source\CInputDx9.cpp">
       <Filter>SourceFile\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\PhysicsDx9.cpp">
+      <Filter>SourceFile\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\BaseObject.cpp">
+      <Filter>SourceFile\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\CGame.h">
@@ -87,6 +93,12 @@
     </ClInclude>
     <ClInclude Include="..\source\CInputDx9.h">
       <Filter>HeaderFile\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\PhysicsDx9.h">
+      <Filter>HeaderFile\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\BaseObject.h">
+      <Filter>HeaderFile\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +152,18 @@
     </Filter>
     <Filter Include="HeaderFile\Input">
       <UniqueIdentifier>{545c8299-3f68-4af7-b563-0b15824f654f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Physics">
+      <UniqueIdentifier>{7101fd35-5d67-48cc-90f6-6bf110d2a11f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Physics">
+      <UniqueIdentifier>{6f6b118d-ce53-4fbd-9f6f-0d1cf4797d52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Object">
+      <UniqueIdentifier>{cd90c6af-cea4-4d96-98b9-1a7d9dad1098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Object">
+      <UniqueIdentifier>{37b00164-dc26-4a8a-8820-817d998cb164}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -12,7 +12,6 @@ private:
 	// Local time to make animation
 	float		m_LocalTime;
 	// Rect using for render an frame
-	RECT*	m_Rect;
 	// index current frame u wanna render
 	int		curFrame;
 	// index start frame

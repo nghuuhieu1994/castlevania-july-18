@@ -183,6 +183,8 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	this->sprite = new CSpriteDx9();
 	this->sprite->InitializeSpriteData(60, 66, 8, 3, 24);
 	this->sprite->LoadTexture(m_lpDirect3DDevice, "resources/simon.png");
+	m_simon = new BaseObject();
+	m_simon->InitializeData(sprite);
 	return true;
 }
 
@@ -204,8 +206,15 @@ void CGame::Run()
 		}
 		else
 		{
+
 			m_GameTime->UpdateGameTime();
 			m_fps += m_GameTime->getElapsedGameTime().getMilliseconds();
+			
+			char buff[100];
+			sprintf(buff, "FPS: %f\n", 1/m_GameTime->getElapsedGameTime().getSeconds());
+			LPCSTR p = buff;
+			OutputDebugString(p);
+			
 			if( m_fps > 1000 / 60)
 			{
 				/*if((int)m_GameTime->getElapsedGameTime().getMilliseconds()%2 == 0)
@@ -221,10 +230,18 @@ void CGame::Run()
 				{
 					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
 
-					sprite->UpdateAnimation(m_GameTime, 100);
+					/*sprite->UpdateAnimation(m_GameTime, 100);
 					
-					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0), SpriteEffect::None);
-					
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0), SpriteEffect::None);*/
+
+					m_simon->UpdateAnimation(m_GameTime);
+					m_simon->UpdateMovement(m_GameTime);
+
+					m_simon->Render(m_lpSpriteDirect3DHandle, NULL);
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 66, 0), SpriteEffect::None);
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(60, 66, 0), SpriteEffect::None);
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(120, 66, 0), SpriteEffect::None);
+					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(180, 66, 0), SpriteEffect::None);
 					m_lpSpriteDirect3DHandle->End();
 
 					m_lpDirect3DDevice->EndScene();

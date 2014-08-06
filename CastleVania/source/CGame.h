@@ -7,6 +7,7 @@
 #include "CSpriteDx9.h"
 #include "CGameTimeDx9.h"
 #include "SpriteEffect.h"
+#include "BaseObject.h"
 
 using namespace std;
 
@@ -44,6 +45,8 @@ protected:
 	float					m_fps;
 	// fps string
 	char				fps[10];
+
+	BaseObject*			m_simon;
 
 public:
 	//---------------------------------------------------

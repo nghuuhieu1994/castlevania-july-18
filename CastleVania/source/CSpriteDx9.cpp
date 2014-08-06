@@ -48,8 +48,11 @@ void CSpriteDx9::LoadTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPCSTR fileName)
 
 CSpriteDx9::CSpriteDx9(const CSpriteDx9* otherSprite)
 {
-	/*this->m_Texture = new CTextureDx9(otherSprite->m_Texture);
-	this->m_MyAnimation = new CAnimationDx9(otherSprite->m_MyAnimation);*/
+	//this->m_Texture = new CTextureDx9(otherSprite->m_Texture);
+	m_lpDTexture = otherSprite->m_lpDTexture;
+	m_totalFrameOfSprite = otherSprite->m_totalFrameOfSprite;
+	m_listSourceRectangle = otherSprite->m_listSourceRectangle;
+	m_animation = new CAnimationDx9();
 }
 
 void CSpriteDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)
@@ -90,7 +93,12 @@ void CSpriteDx9::Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location)
 		AlphaValue);
 }
 
-void CSpriteDx9::Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, void(*spriteEffect)(D3DXMATRIX*, RECT* frameRect))
+D3DXVECTOR3	CSpriteDx9::GetFrameSize()
+{
+	return D3DXVECTOR3(m_listSourceRectangle[0].right, m_listSourceRectangle[0].bottom, 0.0f);
+}
+
+void CSpriteDx9::Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, void(*spriteEffect)(D3DXMATRIX*, RECT*))
 {
 	D3DXMATRIX matrixTransform;
 
