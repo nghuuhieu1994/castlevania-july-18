@@ -6,7 +6,8 @@ CGame::CGame() :
 	m_handleWindow(NULL), 
 	m_lpDirect3D(NULL), 
 	m_lpDirect3DDevice(NULL), 
-	m_lpSpriteDirect3DHandle(NULL)
+	m_lpSpriteDirect3DHandle(NULL),
+	m_Input(NULL)
 {
 	
 }
@@ -180,9 +181,15 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	//this->Mario->LoadContent(m_lpDirect3DDevice);
 	/*this->Mario->getAnimation()->setStartFrame(0);
 	this->Mario->getAnimation()->setEndFrame(2);*/
+	this->m_Input = new CInputDx9();
 	this->sprite = new CSpriteDx9();
 	this->sprite->InitializeSpriteData(60, 66, 8, 3, 24);
 	this->sprite->LoadTexture(m_lpDirect3DDevice, "resources/simon.png");
+
+	this->m_Input->InitializeInput();
+	this->m_Input->InitializeKeyBoardDevice(m_handleWindow);
+	this->m_Input->InitializeMouseDevice(m_handleWindow);
+
 	m_simon = new BaseObject();
 	m_simon->InitializeData(sprite);
 	return true;
@@ -209,12 +216,24 @@ void CGame::Run()
 
 			m_GameTime->UpdateGameTime();
 			m_fps += m_GameTime->getElapsedGameTime().getMilliseconds();
-			
-			char buff[100];
-			sprintf(buff, "FPS: %f\n", 1/m_GameTime->getElapsedGameTime().getSeconds());
+			m_Input->UpdateMouse();
+			m_Input->UpdateKeyBoard();
+			if(m_Input->IsMouseLeftClick())
+			{
+				OutputDebugString("Left\n");
+				char buff[100];
+			sprintf(buff, "X: %d Y: %d\n", m_Input->GetCursorLocation().x, m_Input->GetCursorLocation().y);
 			LPCSTR p = buff;
 			OutputDebugString(p);
-			
+			}
+			if(m_Input->IsMouseRightClick())
+			{
+				OutputDebugString("Right\n");
+				char buff[100];
+			sprintf(buff, "X: %d Y: %d\n", m_Input->GetCursorLocation().x, m_Input->GetCursorLocation().y);
+			LPCSTR p = buff;
+			OutputDebugString(p);
+			}
 			if( m_fps > 1000 / 60)
 			{
 				/*if((int)m_GameTime->getElapsedGameTime().getMilliseconds()%2 == 0)
@@ -235,7 +254,10 @@ void CGame::Run()
 					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0), SpriteEffect::None);*/
 
 					m_simon->UpdateAnimation(m_GameTime);
-					m_simon->UpdateMovement(m_GameTime);
+					if (m_Input->IsKeyDown(DIK_RIGHTARROW))
+					{
+						m_simon->UpdateMovement(m_GameTime); 
+					}
 
 					m_simon->Render(m_lpSpriteDirect3DHandle, NULL);
 					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 66, 0), SpriteEffect::None);

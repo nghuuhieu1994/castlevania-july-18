@@ -8,6 +8,7 @@
 #include "CGameTimeDx9.h"
 #include "SpriteEffect.h"
 #include "BaseObject.h"
+#include "CInputDx9.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ protected:
 	//Pointer of Microsft Direct3D Sprite Interface, have a bunch of method to process sprite
 	LPD3DXSPRITE		m_lpSpriteDirect3DHandle;
 	CGameTimeDx9*		m_GameTime;
-	
+	CInputDx9*			m_Input;
 	//Initialize Window Of Game
 	bool				InitializeHandleWindow (HINSTANCE);
 

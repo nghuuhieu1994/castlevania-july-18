@@ -5,10 +5,12 @@ CSpriteDx9::CSpriteDx9()
 {
 
 }
+
 CSpriteDx9::CSpriteDx9(D3DXVECTOR3* Position, LPCSTR fileName, D3DCOLOR color, int ColFrame, int RowFrame, int TotalFrame)
 {
 
 }
+
 void CSpriteDx9::LoadTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPCSTR fileName)
 {
 	
@@ -49,10 +51,12 @@ void CSpriteDx9::LoadTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPCSTR fileName)
 CSpriteDx9::CSpriteDx9(const CSpriteDx9* otherSprite)
 {
 	//this->m_Texture = new CTextureDx9(otherSprite->m_Texture);
-	m_lpDTexture = otherSprite->m_lpDTexture;
-	m_totalFrameOfSprite = otherSprite->m_totalFrameOfSprite;
-	m_listSourceRectangle = otherSprite->m_listSourceRectangle;
-	m_animation = new CAnimationDx9();
+	m_lpDTexture			= otherSprite->m_lpDTexture;
+	m_totalFrameOfSprite	= otherSprite->m_totalFrameOfSprite;
+	m_listSourceRectangle	= otherSprite->m_listSourceRectangle;
+	m_alphaOffsetPerFrame	= otherSprite->m_alphaOffsetPerFrame;
+	m_alphaRender			= otherSprite->m_alphaRender;
+	m_animation				= new CAnimationDx9(otherSprite->m_animation);
 }
 
 void CSpriteDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)

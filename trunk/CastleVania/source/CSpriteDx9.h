@@ -28,10 +28,13 @@ private:
 	int					m_totalFrameOfSprite;
 
 	int					m_alphaRender;
+
 	int					m_alphaOffsetPerFrame;
 public:
 	CSpriteDx9();
+
 	CSpriteDx9(D3DXVECTOR3* Position, LPCSTR fileName, D3DCOLOR  color, int ColFrame, int RowFrame, int TotalFrame);
+
 	CSpriteDx9(const CSpriteDx9* otherSprite);
 	//---------------------------------------------------
 	/// @desciption: use this function to get data of sprite(frameWidth, frameHeight...)

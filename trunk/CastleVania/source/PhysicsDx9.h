@@ -7,7 +7,9 @@
 class PhysicDx9
 {
 	D3DXVECTOR3*		m_velocityPerFrame;
+
 	D3DXVECTOR3*		m_location;
+
 	D3DXVECTOR3*		m_size;
 public:
 	PhysicDx9();
