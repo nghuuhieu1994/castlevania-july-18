@@ -46,12 +46,13 @@ public:
 	void LoadTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPCSTR fileName);
 	void Effect(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* center, D3DXVECTOR3* location);
 	//void Render(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite);
+	D3DXVECTOR3		GetFrameSize();
 	CAnimationDx9* getAnimation();
 	//---------------------------------------------------
 	/// This function contains blablabla...
 	//---------------------------------------------------
 	void Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location);
-	void Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, void(*spriteEffect)(D3DXMATRIX*, RECT* frameRect));
+	void Render(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* location, void(*spriteEffect)(D3DXMATRIX*, RECT*));
 };
 
 

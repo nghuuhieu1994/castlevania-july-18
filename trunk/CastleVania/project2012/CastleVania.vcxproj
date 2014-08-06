@@ -70,6 +70,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\BaseObject.cpp" />
     <ClCompile Include="..\source\CAnimationDx9.cpp" />
     <ClCompile Include="..\source\CGame.cpp" />
     <ClCompile Include="..\source\CGameTimeDx9.cpp" />
@@ -82,11 +83,13 @@
     <ClCompile Include="..\source\CTimeSpanDx9.cpp" />
     <ClCompile Include="..\source\EntryPoint.cpp" />
     <ClCompile Include="..\source\GameLog.cpp" />
+    <ClCompile Include="..\source\PhysicsDx9.cpp" />
     <ClCompile Include="..\source\RectangleDx9.cpp" />
     <ClCompile Include="..\source\SpriteEffect.cpp" />
     <ClCompile Include="..\source\VectorDx9.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\source\BaseObject.h" />
     <ClInclude Include="..\source\CAnimationDx9.h" />
     <ClInclude Include="..\source\CGame.h" />
     <ClInclude Include="..\source\CGameTimeDx9.h" />
@@ -98,6 +101,7 @@
     <ClInclude Include="..\source\CTextureDx9.h" />
     <ClInclude Include="..\source\CTimeSpanDx9.h" />
     <ClInclude Include="..\source\GameLog.h" />
+    <ClInclude Include="..\source\PhysicsDx9.h" />
     <ClInclude Include="..\source\RectangleDx9.h" />
     <ClInclude Include="..\source\SpriteEffect.h" />
     <ClInclude Include="..\source\VectorDx9.h" />
