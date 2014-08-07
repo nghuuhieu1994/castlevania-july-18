@@ -14,7 +14,9 @@ class CInputDx9
 	
 	LPDIRECTINPUTDEVICE8	m_lpMouseDevice;
 
-	DIMOUSESTATE			m_mouseState;
+	DIMOUSESTATE2			m_mouseState;
+
+	D3DXVECTOR2				m_cursorLocation;
 
 	char					m_keyBoardBuffer[256];
 public:

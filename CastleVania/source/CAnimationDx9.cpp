@@ -3,8 +3,8 @@
 CAnimationDx9::CAnimationDx9()
 {
 	curFrame = 0;
-	startFrame = 5;
-	endFrame = 7;
+	startFrame = 0;
+	endFrame = 3;
 	m_LocalTime = 0;
 	m_TotalFrame = 23;
 }

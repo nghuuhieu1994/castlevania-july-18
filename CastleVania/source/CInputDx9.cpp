@@ -5,7 +5,8 @@ CInputDx9::CInputDx9() :
 	m_lpKeyBoardDevice(NULL),
 	m_lpMouseDevice(NULL)
 {
-
+	m_cursorLocation.x = 0;
+	m_cursorLocation.y = 0;
 }
 
 void CInputDx9::InitializeInput()
@@ -68,7 +69,7 @@ void CInputDx9::InitializeMouseDevice(HWND handleWindow)
 
 	ZeroMemory(&m_mouseState, sizeof(m_mouseState));
 
-	result=m_lpMouseDevice->SetDataFormat(&c_dfDIMouse);
+	result=m_lpMouseDevice->SetDataFormat(&c_dfDIMouse2);
 
 	if(result != DI_OK)
 	{
@@ -107,20 +108,25 @@ void CInputDx9::UpdateKeyBoard()
 
 bool CInputDx9::IsKeyDown(int keyCode)
 {
-	if (m_keyBoardBuffer[keyCode] & 0x80)
+	if (m_keyBoardBuffer[keyCode] & 0x00000080)
 		return true;
 	return false;
 }
 
 void CInputDx9::UpdateMouse()
 {
-	HRESULT result = m_lpMouseDevice->GetDeviceState(sizeof(DIMOUSESTATE), (LPVOID)&m_mouseState);
+	ZeroMemory(&m_mouseState, sizeof(m_mouseState));
+	HRESULT result = m_lpMouseDevice->GetDeviceState(sizeof(DIMOUSESTATE2), (LPVOID)&m_mouseState);
+
+	m_cursorLocation.x += m_mouseState.lX;
+	m_cursorLocation.y += m_mouseState.lY;
 
 	if(FAILED(result))
 	{
 		ZeroMemory(&m_mouseState, sizeof(m_mouseState));
 		m_lpMouseDevice->Acquire();
 	}
+	
 }
 
 D3DXVECTOR2 CInputDx9::GetCursorLocation()

@@ -2,6 +2,8 @@
 #include "GameLog.h"
 #include <d3dtypes.h>
 #include <stdlib.h>
+#include "Camera.h"
+
 CGame::CGame() : 
 	m_handleWindow(NULL), 
 	m_lpDirect3D(NULL), 
@@ -52,8 +54,8 @@ bool CGame::InitializeHandleWindow(HINSTANCE hInstance)
 	m_handleWindow = CreateWindow(
 		"CGame",
 		GAMETITLE,
-		WS_OVERLAPPEDWINDOW,
-		100,
+		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_BORDER | WS_MINIMIZEBOX,
+		200,
 		100,
 		WIDTH,
 		HEIGHT,
@@ -67,10 +69,10 @@ bool CGame::InitializeHandleWindow(HINSTANCE hInstance)
 		CGameLog::GetInstance("CGame")->SaveError("Can't Create Window!");
 		return false;
 	}
-
+	
 	ShowWindow(m_handleWindow, SW_SHOW);
 	UpdateWindow(m_handleWindow);
-
+	//SetCursorPos(200, 100);
 	return true;
 }
 
@@ -186,11 +188,15 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	this->sprite->InitializeSpriteData(60, 66, 8, 3, 24);
 	this->sprite->LoadTexture(m_lpDirect3DDevice, "resources/simon.png");
 
+	this->Mario = new CSpriteDx9();
+	this->Mario->InitializeSpriteData(1536, 384, 1, 1, 1);
+	this->Mario->LoadTexture(m_lpDirect3DDevice, "resources/background1.png");
+
 	this->m_Input->InitializeInput();
 	this->m_Input->InitializeKeyBoardDevice(m_handleWindow);
 	this->m_Input->InitializeMouseDevice(m_handleWindow);
 
-	m_simon = new BaseObject();
+	m_simon = new Simon();
 	m_simon->InitializeData(sprite);
 	return true;
 }
@@ -204,66 +210,50 @@ void CGame::Run()
 
 	while(!CGlobal::IsExit)
 	{
+		#pragma region Quit Game
 		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if(msg.message == WM_QUIT)
 				break;
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
-		}
+		}  
+		#pragma endregion
+
+		#pragma region Run Game
 		else
 		{
 
 			m_GameTime->UpdateGameTime();
 			m_fps += m_GameTime->getElapsedGameTime().getMilliseconds();
-			m_Input->UpdateMouse();
+
 			m_Input->UpdateKeyBoard();
-			if(m_Input->IsMouseLeftClick())
-			{
-				OutputDebugString("Left\n");
-				char buff[100];
-			sprintf(buff, "X: %d Y: %d\n", m_Input->GetCursorLocation().x, m_Input->GetCursorLocation().y);
-			LPCSTR p = buff;
-			OutputDebugString(p);
-			}
-			if(m_Input->IsMouseRightClick())
-			{
-				OutputDebugString("Right\n");
-				char buff[100];
-			sprintf(buff, "X: %d Y: %d\n", m_Input->GetCursorLocation().x, m_Input->GetCursorLocation().y);
-			LPCSTR p = buff;
-			OutputDebugString(p);
-			}
+			m_Input->UpdateMouse();
 			if( m_fps > 1000 / 60)
 			{
 				/*if((int)m_GameTime->getElapsedGameTime().getMilliseconds()%2 == 0)
 				{
-					m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0); 
+				m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0); 
 				}
 				else
 				{
-					m_lpDirect3DDevice->Clear(0 , 0, D3DCLEAR_TARGET,D3DCOLOR_XRGB( 255, 255, 255), 1.0f, 0); 
+				m_lpDirect3DDevice->Clear(0 , 0, D3DCLEAR_TARGET,D3DCOLOR_XRGB( 255, 255, 255), 1.0f, 0); 
 				}*/
 				m_lpDirect3DDevice->Clear(0 , 0,D3DCLEAR_TARGET,D3DCOLOR_XRGB( 0, 0, 0), 1.0f, 0); 
 				if(m_lpDirect3DDevice->BeginScene())
 				{
 					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND);
-
+					Camera::GetInstance()->UpdateCamera(m_simon->GetPhysics()->GetLocation());
 					/*sprite->UpdateAnimation(m_GameTime, 100);
-					
+
 					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 0, 0), SpriteEffect::None);*/
-
+					m_simon->GetInput(m_Input);
 					m_simon->UpdateAnimation(m_GameTime);
-					if (m_Input->IsKeyDown(DIK_RIGHTARROW))
-					{
-						m_simon->UpdateMovement(m_GameTime); 
-					}
+					m_simon->UpdateMovement(m_GameTime);
 
+					Mario->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0.0f, 50.0f, 0.0f));
 					m_simon->Render(m_lpSpriteDirect3DHandle, NULL);
-					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(0, 66, 0), SpriteEffect::None);
-					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(60, 66, 0), SpriteEffect::None);
-					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(120, 66, 0), SpriteEffect::None);
-					sprite->Render(m_lpSpriteDirect3DHandle, &D3DXVECTOR3(180, 66, 0), SpriteEffect::None);
+
 					m_lpSpriteDirect3DHandle->End();
 
 					m_lpDirect3DDevice->EndScene();
@@ -271,7 +261,9 @@ void CGame::Run()
 				m_lpDirect3DDevice->Present( 0, 0, 0, 0);
 				m_fps = 0;
 			}
-		}		
+		}	  
+		#pragma endregion
+
 	}
 }
 
@@ -283,6 +275,7 @@ void CGame::Exit()
 
 LRESULT CALLBACK CGame::WndProceduce(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	
 	switch(message)
 	{
 	case WM_DESTROY:

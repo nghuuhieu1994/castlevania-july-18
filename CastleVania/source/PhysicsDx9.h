@@ -20,6 +20,7 @@ public:
 	//--------------------------------------
 	void InitializeObjectData(D3DXVECTOR3 size, int locationX, int locationY);
 	void UpdateMovement(CGameTimeDx9* gameTime);
+	void SetVelocityPerFrame(float velocityX, float velocityY);
 	D3DXVECTOR3* GetLocation();
 	~PhysicDx9();
 };

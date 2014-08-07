@@ -30,6 +30,11 @@ private:
 	int					m_alphaRender;
 
 	int					m_alphaOffsetPerFrame;
+
+	void				(*m_spriteEffect)(D3DXMATRIX*, RECT*);
+
+	float				m_FlipY;
+
 public:
 	CSpriteDx9();
 
@@ -49,7 +54,12 @@ public:
 	void LoadTexture(LPDIRECT3DDEVICE9 _lpDirectDevice, LPCSTR fileName);
 	void Effect(LPD3DXSPRITE spriteBatch, D3DXVECTOR3* center, D3DXVECTOR3* location);
 	//void Render(LPDIRECT3DDEVICE9 _lpDirectDevice, LPD3DXSPRITE _lpDSprite);
+	void SetSpriteEffect(void (*spriteEffect)(D3DXMATRIX*, RECT*));
 	D3DXVECTOR3		GetFrameSize();
+	void SetFlipY(float x)
+	{
+		m_FlipY = x;
+	}
 	CAnimationDx9* getAnimation();
 	//---------------------------------------------------
 	/// This function contains blablabla...
