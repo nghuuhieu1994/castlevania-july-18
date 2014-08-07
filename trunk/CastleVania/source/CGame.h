@@ -9,6 +9,7 @@
 #include "SpriteEffect.h"
 #include "BaseObject.h"
 #include "CInputDx9.h"
+#include "Simon.h"
 
 using namespace std;
 
@@ -47,7 +48,7 @@ protected:
 	// fps string
 	char				fps[10];
 
-	BaseObject*			m_simon;
+	Simon*			m_simon;
 
 public:
 	//---------------------------------------------------

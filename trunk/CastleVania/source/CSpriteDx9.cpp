@@ -1,5 +1,6 @@
 #include "CSpriteDx9.h"
 #include "GameLog.h"
+#include "Camera.h"
 
 CSpriteDx9::CSpriteDx9()
 {
@@ -56,7 +57,9 @@ CSpriteDx9::CSpriteDx9(const CSpriteDx9* otherSprite)
 	m_listSourceRectangle	= otherSprite->m_listSourceRectangle;
 	m_alphaOffsetPerFrame	= otherSprite->m_alphaOffsetPerFrame;
 	m_alphaRender			= otherSprite->m_alphaRender;
+	m_spriteEffect			= otherSprite->m_spriteEffect;
 	m_animation				= new CAnimationDx9(otherSprite->m_animation);
+	m_FlipY					= otherSprite->m_FlipY;
 }
 
 void CSpriteDx9::UpdateAnimation(CGameTimeDx9* gameTime, int timeAnimation)
@@ -78,6 +81,9 @@ void CSpriteDx9::InitializeSpriteData(int frameWidth, int frameHeight, int sheet
 		tempRect.right = frameWidth + tempRect.left;
 		m_listSourceRectangle.push_back(tempRect);
 	}
+
+	m_spriteEffect = SpriteEffect::None;
+	m_FlipY = 1.0f;
 }
 
 CAnimationDx9* CSpriteDx9::getAnimation()
@@ -87,14 +93,58 @@ CAnimationDx9* CSpriteDx9::getAnimation()
 
 void CSpriteDx9::Render(LPD3DXSPRITE _SpriteBatch, D3DXVECTOR3* _Location)
 {
+	/*D3DXMATRIX matrixTransform;
+
+	D3DXMatrixIdentity(&matrixTransform);
+	m_spriteEffect(&matrixTransform, &m_listSourceRectangle.at(0));
+
+	_SpriteBatch->SetTransform(&matrixTransform);
+	/*
+	D3DXVECTOR3 center;
+	center.x = GetFrameSize().x / 2;
+	center.y = GetFrameSize().y / 2;
+	center.z = GetFrameSize().z;*/
+	D3DXMATRIX matrixTransform;
+
+	D3DXMatrixIdentity(&matrixTransform);
+	//m_spriteEffect(&matrixTransform, &m_listSourceRectangle.at(0));
+
+	D3DXMatrixScaling(&matrixTransform, m_FlipY, 1.0f, 1.0f);
+
+	_SpriteBatch->SetTransform(&matrixTransform);
+
+	D3DXMATRIX matrix;
+	D3DXMatrixIdentity(&matrix);
+
+	matrix._22 = -1.0f;
+
+	matrix._41 = Camera::GetInstance()->GetMatrixTranslate()._41;
+	matrix._42 = Camera::GetInstance()->GetMatrixTranslate()._42;
+
+	D3DXVECTOR4 vp_pos;
+	D3DXVec3Transform(&vp_pos, _Location, &matrix);
+
+	float halfWidth = GetFrameSize().x / 2;
+	float halfHeight = GetFrameSize().y / 2;
+	D3DXVECTOR3 p(vp_pos.x + halfWidth, vp_pos.y - halfHeight, 0);
+	D3DXVECTOR3 center(halfWidth, halfHeight, 0);
+	if (m_FlipY < 0)
+	{
+		p.x = -p.x;
+	}
 	DWORD AlphaValue;
 	AlphaValue = D3DCOLOR_ARGB(255, 255, 255, 255);
 	_SpriteBatch->Draw(
 		this->m_lpDTexture,
 		&m_listSourceRectangle.at(m_animation->GetCurrentFrameIndex()),
-		NULL,
-		_Location,
-		AlphaValue);
+		&center,
+		&p,
+		AlphaValue); 
+}
+
+void CSpriteDx9::SetSpriteEffect(void (*spriteEffect)(D3DXMATRIX*, RECT*))
+{
+	m_spriteEffect = spriteEffect;
 }
 
 D3DXVECTOR3	CSpriteDx9::GetFrameSize()

@@ -50,6 +50,12 @@
     <ClCompile Include="..\source\BaseObject.cpp">
       <Filter>SourceFile\Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\Simon.cpp">
+      <Filter>SourceFile\Object\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Camera.cpp">
+      <Filter>SourceFile\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\CGame.h">
@@ -99,6 +105,12 @@
     </ClInclude>
     <ClInclude Include="..\source\BaseObject.h">
       <Filter>HeaderFile\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Simon.h">
+      <Filter>HeaderFile\Object\Simon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Camera.h">
+      <Filter>HeaderFile\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +176,18 @@
     </Filter>
     <Filter Include="SourceFile\Object">
       <UniqueIdentifier>{37b00164-dc26-4a8a-8820-817d998cb164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Object\Simon">
+      <UniqueIdentifier>{5c548d45-794b-4434-957a-bf7419db1858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Object\Simon">
+      <UniqueIdentifier>{965c2a43-aee8-4c8a-a17e-67ec1a9f64f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Camera">
+      <UniqueIdentifier>{04479b24-58a6-4404-9f0d-79583bdb06a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Camera">
+      <UniqueIdentifier>{bd858c1c-1418-4daf-acc1-4cf6bd37b0ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

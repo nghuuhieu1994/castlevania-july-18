@@ -6,6 +6,7 @@
 
 class BaseObject
 {
+protected:
 	CSpriteDx9* m_sprite;
 	PhysicDx9*	m_physics;
 public:

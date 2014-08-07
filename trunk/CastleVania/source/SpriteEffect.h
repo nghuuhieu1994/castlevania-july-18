@@ -11,12 +11,14 @@ public:
 	SpriteEffect(){}
 	static void FlipHorizontally(D3DXMATRIX *matrixTrans, RECT* frameRect)
 	{
-		matrixTrans->_11 = -1;//cos(180)
-		matrixTrans->_33 = -1;//cos(180)
-		matrixTrans->_13 = 0;//-sin(180)
-		matrixTrans->_31 = 0;//sin(180)
+		//matrixTrans->_11 = -1;//cos(180)
+		//matrixTrans->_33 = -1;//cos(180)
+		//matrixTrans->_13 = 0;//-sin(180)
+		//matrixTrans->_31 = 0;//sin(180)
+		
+		D3DXMatrixScaling(matrixTrans, -1.0f, 1.0f, 1.0f);
 
-		matrixTrans->_41 = frameRect->right;
+		matrixTrans->_41 = 200;
 		//matrixTrans->_42 = 33;
 	}
 	static void FlipVertically(D3DXMATRIX *matrixTrans, RECT* frameRect)
@@ -31,7 +33,7 @@ public:
 	}
 	static void None(D3DXMATRIX *matrixTrans, RECT* frameRect)
 	{
-
+		D3DXMatrixScaling(matrixTrans, 1.0f, 1.0f, 1.0f);
 	}
 	~SpriteEffect(){}
 };
